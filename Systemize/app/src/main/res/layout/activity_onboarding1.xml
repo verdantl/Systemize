@@ -1,73 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/peach"
     tools:context=".OnboardingActivity1">
 
     <TextView
+        android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/futura_book"
-        android:id="@+id/welcome_text"
-        android:textSize="36dp"
-        android:layout_marginRight="90sp"
+        android:layout_marginRight="91dp"
+        android:fontFamily="@font/futura"
         android:gravity="left"
         android:text="Welcome to \nsystemize!"
+        android:textColor="@color/black"
+        android:textSize="36dp"
+        app:layout_constraintBottom_toTopOf="@id/welcome_enter_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/welcome_description"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/welcome_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/futura_book"
+        android:layout_marginRight="75sp"
+        android:fontFamily="@font/futura"
         android:gravity="left"
         android:text="To get started tell us \nyour name."
+        android:textColor="@color/black"
         android:textSize="24dp"
-        android:layout_marginRight="75sp"
         app:layout_constraintBottom_toBottomOf="@id/welcome_enter_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcome_text" />
+        app:layout_constraintTop_toTopOf="@id/welcome_text" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="24dp"
         android:fontFamily="@font/futura"
         android:hint="Type your name here"
         android:id="@+id/welcome_enter_text"
+        android:textColor="@color/dark_gray"
+        android:layout_marginRight="75sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcome_description"
-        app:layout_constraintBottom_toTopOf="@id/next_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:src="@drawable/office"
+        android:id="@+id/self"
+        android:layout_width="484dp"
+        android:layout_height="446dp"
+        android:src="@drawable/self"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcome_enter_text"
+        app:layout_constraintVertical_bias="0.632" />
 
-        />
     <Button
         android:id="@+id/next_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="116dp"
+        android:layout_height="47dp"
+        android:background="@drawable/next_button"
         android:text="Next"
-        app:layout_constraintTop_toBottomOf="@id/welcome_enter_text"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        android:background="@drawable/next_button"
-        />
+        app:layout_constraintTop_toBottomOf="@id/welcome_enter_text"
+        app:layout_constraintVertical_bias="0.893" />
 </androidx.constraintlayout.widget.ConstraintLayout>
