@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="15dp"
+    android:background="@color/silver"
     android:layout_margin="10dp">
     <LinearLayout
         android:layout_width="match_parent"
