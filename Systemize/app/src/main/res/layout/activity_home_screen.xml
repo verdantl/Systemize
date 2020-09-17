@@ -5,20 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeScreenActivity">
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"/>
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical"
+        android:weightSum="6">
+        <FrameLayout
+            android:id="@+id/top_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4" />
+    </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:itemIconTint="@color/black"
         app:menu="@menu/bottom_navigation"
         android:id="@+id/bottom_nav"
         android:background="?android:attr/windowBackground"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
