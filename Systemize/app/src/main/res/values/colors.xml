@@ -17,6 +17,8 @@
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
     <color name="peach">#FFAA9D</color>
+    <color name="dark_peach">#FF8D7C</color>
+    <color name="light_peach">#FFE3DE</color>
     <color name="dark_gray">#454242</color>
     <color name="navy_blue">#3B60E4</color>
 </resources>
