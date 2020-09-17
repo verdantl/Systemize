@@ -9,27 +9,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/futura_book"
+        android:id="@+id/welcome_text"
+        android:textSize="36dp"
+        android:layout_marginRight="90sp"
+        android:gravity="left"
+        android:text="Welcome to \nsystemize!"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/welcome_description"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/welcome_text"
-        android:textSize="50sp"
-        android:gravity="center_horizontal"
-        android:text="Welcome to Systemize!"
         />
-    
+
+
     <TextView
         android:id="@+id/welcome_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To get started tell us your name."
-        android:textSize="35sp"
+        android:fontFamily="@font/futura_book"
+        android:gravity="left"
+        android:text="To get started tell us \nyour name."
+        android:textSize="24dp"
+        android:layout_marginRight="75sp"
+        app:layout_constraintBottom_toBottomOf="@id/welcome_enter_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcome_text"
-        app:layout_constraintBottom_toBottomOf="@id/welcome_enter_text"
-        android:fontFamily="@font/futura_bold"/>
+        app:layout_constraintTop_toBottomOf="@id/welcome_text" />
 
     <EditText
         android:layout_width="wrap_content"
