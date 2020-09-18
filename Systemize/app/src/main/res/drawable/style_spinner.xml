@@ -5,12 +5,12 @@
             <item>
                 <shape android:shape="rectangle">
                     <solid android:color="@color/olive"/>
-                    <corners android:radius="10dp"/>
+                    <corners android:radius="15dp"/>
                     <padding android:right="10dp"/>
                 </shape>
             </item>
-            <item android:drawable="@drawable/ic_baseline_arrow_drop_down_circle_24">
-            </item>
+<!--            <item android:drawable="@drawable/ic_baseline_arrow_drop_down_circle_24">-->
+<!--            </item>-->
         </layer-list>
     </item>
 </selector>

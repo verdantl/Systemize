@@ -69,18 +69,48 @@
         />
 
 
-    <Spinner
+    <LinearLayout
         android:id="@+id/set_reminder"
         android:background="@drawable/style_spinner"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/choose_category"
+        app:layout_constraintBottom_toTopOf="@id/create_button"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/futura_medium"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:text="Set Reminder"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/create_button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/next_button"
+        android:onClick="onCreateTaskClicked"
+        android:text="Create Task"
+        android:textColor="@color/white"
+        android:fontFamily="@font/futura_medium"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/set_reminder"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="20dp"
+        android:textSize="20sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

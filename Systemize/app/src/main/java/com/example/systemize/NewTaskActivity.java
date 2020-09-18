@@ -24,6 +24,9 @@ public class NewTaskActivity extends AppCompatActivity {
 
     }
 
+    public void onCreateTaskClicked(View view){
+
+    }
 
     public void onCalendarClicked(View view){
 
