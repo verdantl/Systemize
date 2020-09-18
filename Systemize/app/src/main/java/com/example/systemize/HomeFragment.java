@@ -22,25 +22,38 @@ import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter listAdapter;
+    private ListAdapter listAdapter;
     private ArrayList<TaskItem> taskList;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
+        buildRecyclerView(view);
+
+        return view;
+    }
+
+    private void buildRecyclerView(View view){
         recyclerView = view.findViewById(R.id.recycler_view);
-
-        taskList.add(new TaskItem("Title here", R.drawable.ic_baseline_home_24));
-
-        taskList.add(new TaskItem("Title2 here", R.drawable.ic_baseline_home_24));
-
+//        readDatabase();
+        taskList = new ArrayList<>();
+        taskList.add(new TaskItem(1, "Title 1","", false ));
+        taskList.add(new TaskItem(1, "Title 2","", true ));
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium));
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listAdapter);
 
-        return view;
+        listAdapter.setOnItemClickListener(new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                taskList.get(position).changeCompleted();
+                System.out.println(taskList.get(position).getTitle());
+                System.out.println(taskList.get(position).getCompleted());
+            }
+        });
+
     }
 
     private void readDatabase(){
@@ -48,7 +61,7 @@ public class HomeFragment extends Fragment {
         c.set(Calendar.YEAR, LocalDate.now().getYear());
         c.set(Calendar.MONTH, LocalDate.now().getMonthValue());
         c.set(Calendar.DAY_OF_MONTH, LocalDate.now().getDayOfMonth());
-        String date = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime()).toString();
+        String date = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
         SQLiteDatabase db = new TaskHelper(Objects.requireNonNull(getActivity()).
                 getApplicationContext()).getReadableDatabase();
@@ -66,9 +79,15 @@ public class HomeFragment extends Fragment {
                 null,
                 sortOrder);
         taskList = new ArrayList<>();
-//        while (cursor.moveToNext()){
-//            taskList.add(new TaskItem())
-//        }
+        while (cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
+            String title = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_TASK));
+            String category = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY));
+            boolean completed = Boolean.parseBoolean(cursor.getString(
+                    cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED)));
+            taskList.add(new TaskItem(id, title, category, completed));
+        }
+        cursor.close();
 
     }
 

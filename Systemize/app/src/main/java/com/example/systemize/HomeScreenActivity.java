@@ -29,7 +29,6 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
 
     public void onChecked(View view){
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
