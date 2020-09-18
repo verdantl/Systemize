@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewTaskActivity">
+    
+    <TextView
+        android:id="@+id/new_task_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create New Task"
+        android:textSize="35sp"
+        android:fontFamily="@font/futura"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/task_name"/>
+    
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task Name"
+        android:id="@+id/task_name"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_task_header"
+        app:layout_constraintBottom_toBottomOf="@id/table"/>
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/table"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_name"
+        app:layout_constraintBottom_toTopOf="@id/choose_category">
+        <TableRow>
+            <ImageButton
+                android:onClick="onCalendarClicked"
+                android:src="@drawable/ic_baseline_calendar_today_24"
+                android:contentDescription="calendarbutton" />
+            <TextView
+                android:id="@+id/date"
+                />
+        </TableRow>
+        <TableRow>
+            <ImageButton
+                android:onClick="onDurationClicked"
+                android:src="@drawable/ic_baseline_calendar_today_24"
+                android:contentDescription="duration" />
+            <TextView
+                android:id="@+id/duration"
+                />
+        </TableRow>
+    </TableLayout>
+    
+    <Spinner
+        android:background="@drawable/style_spinner"
+        android:id="@+id/choose_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/table"
+        app:layout_constraintBottom_toTopOf="@id/set_reminder"
+        />
+
+
+    <Spinner
+        android:id="@+id/set_reminder"
+        android:background="@drawable/style_spinner"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/choose_category"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
