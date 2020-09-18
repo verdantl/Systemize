@@ -3,14 +3,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="@color/gray"
-    app:cardCornerRadius="10dp">
+    android:backgroundTint="@color/peach"
+    app:cardCornerRadius="20dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -24,12 +24,16 @@
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:fontFamily="@font/futura_bold"
                 android:layout_height="wrap_content"
-                android:text="Do you know?"/>
+                android:text="Did you know?"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="See your weekly productivity summary on your profile."/>
+                android:padding="5dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="See your weekly productivity summary \n on your profile."/>
         </LinearLayout>
     </LinearLayout>
 

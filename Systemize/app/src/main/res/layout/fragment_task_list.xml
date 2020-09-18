@@ -9,16 +9,57 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:orientation="vertical"
-        android:weightSum="6">
+        android:weightSum="20">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
         <TextView
             android:id="@+id/hi_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:gravity="center_horizontal"
-            android:text="Hi, what's the agenda for today?"/>
+            android:text="Hey, what's the agenda for today?"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <include layout="@layout/card_note"/>
+
+        <LinearLayout
+            android:id="@+id/set_reminder"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            app:layout_constraintBottom_toTopOf="@id/recycler_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hi_message">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/futura_medium"
+                android:padding="15dp"
+                android:layout_weight="1"
+                android:text="Your Tasks"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_home_24" />
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -27,7 +68,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/recycler_view"
-            android:layout_weight="4"/>
+            android:layout_weight="10"/>
 
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.example.systemize;
 
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
     private ArrayList<TaskItem> itemList;
+    private Typeface typeface;
 
     public static class ListViewHolder extends RecyclerView.ViewHolder{
         public CheckBox checkBox;
@@ -27,8 +29,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         }
     }
 
-    public ListAdapter(ArrayList<TaskItem> itemList){
+    public ListAdapter(ArrayList<TaskItem> itemList, Typeface typeface){
         this.itemList = itemList;
+        this.typeface = typeface;
 
     }
     @NonNull
@@ -43,6 +46,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         TaskItem taskItem = itemList.get(position);
         holder.textView.setText(taskItem.getTitle());
+        holder.textView.setTypeface(typeface);
         holder.category.setImageResource(taskItem.getCategoryImage());
     }
 

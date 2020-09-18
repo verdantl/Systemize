@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
 
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        listAdapter = new ListAdapter(taskList);
+        listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium));
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listAdapter);
 
