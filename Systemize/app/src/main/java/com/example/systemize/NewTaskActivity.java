@@ -53,7 +53,6 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         duration = findViewById(R.id.duration);
         duration.setText("All Day");
         taskName = findViewById(R.id.task_name);
-        System.out.println(date.getText());
 //        setUpDatabase();
 
     }
