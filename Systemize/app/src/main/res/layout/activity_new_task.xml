@@ -41,18 +41,30 @@
             <ImageButton
                 android:onClick="onCalendarClicked"
                 android:src="@drawable/ic_baseline_calendar_today_24"
-                android:contentDescription="calendarbutton" />
+                android:contentDescription="calendarbutton"
+                android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/date"
+                android:gravity="center"
+                android:fontFamily="@font/futura_medium"
+                android:textSize="24sp"
+                android:paddingTop="5dp"
+                android:textColor="@color/black"
                 />
         </TableRow>
         <TableRow>
             <ImageButton
                 android:onClick="onDurationClicked"
                 android:src="@drawable/ic_baseline_calendar_today_24"
-                android:contentDescription="duration" />
+                android:contentDescription="duration"
+                android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/duration"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:paddingTop="5dp"
+                android:fontFamily="@font/futura_medium"
                 />
         </TableRow>
     </TableLayout>
