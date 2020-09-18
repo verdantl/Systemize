@@ -3,7 +3,7 @@
     <font
         android:fontStyle="italic"
         android:fontWeight="400"
-        android:font="@font/futura_bold" />
+        android:font="@font/futura_book" />
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
