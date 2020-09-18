@@ -75,10 +75,12 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:fontFamily="@font/futura"
-                app:layout_constraintRight_toLeftOf="@id/work_text"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_weight="1"
+                android:gravity="center"
                 />
             <TextView
                 android:id="@+id/work_text"
@@ -89,9 +91,11 @@
                 android:textSize="17dp"
                 android:fontFamily="@font/futura"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/personal_text"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center"
+                android:layout_weight="1"
                 />
         </LinearLayout>
 
@@ -109,19 +113,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:src="@drawable/hug"/>
+                android:src="@drawable/hug"
+                app:layout_constraintLeft_toLefttOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/finances"
+                />
             <ImageView
                 android:id="@+id/finances"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:src="@drawable/bill"/>
-
+                android:src="@drawable/bill"
+                app:layout_constraintLeft_toRighttOf="@id/social"
+                app:layout_constraintRight_toRightOf="parent"
+                />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/social_finances2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintRight_toRightOf="parent"
@@ -130,6 +139,7 @@
             app:layout_constraintTop_toBottomOf="@id/work_personal2">
 
             <TextView
+                android:id="@+id/social_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Social"
@@ -137,19 +147,22 @@
                 android:textSize="17dp"
                 android:fontFamily="@font/futura"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_gravity="center"
+                app:layout_constraintLeft_toRightOf="parent"
+                android:gravity="center"
+                android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/finances_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Finances"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:fontFamily="@font/futura"
-                android:layout_gravity="center"
-                app:layout_constraintRight_toRightOf="parent"
+                android:gravity="center"
+                app:layout_constraintRight_toLeftOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_weight="1"
                 />
         </LinearLayout>
 
@@ -159,9 +172,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/social_finances2"
-            app:layout_constraintBottom_toTopOf="@id/parent">
+            app:layout_constraintLeft_toLeftOf="parent">
             <ImageView
                 android:id="@+id/family"
                 android:layout_width="wrap_content"
@@ -177,7 +188,7 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/family_school2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintRight_toRightOf="parent"
@@ -194,7 +205,8 @@
                 android:fontFamily="@font/futura"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -203,9 +215,10 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:fontFamily="@font/futura"
-                android:layout_gravity="center"
+                android:gravity="center"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_weight="1"
                 />
         </LinearLayout>
     </LinearLayout>
