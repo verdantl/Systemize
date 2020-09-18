@@ -45,7 +45,7 @@
                 android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/date"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:fontFamily="@font/futura_medium"
                 android:textSize="24sp"
                 android:paddingTop="5dp"
@@ -60,7 +60,7 @@
                 android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/duration"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:textSize="24sp"
                 android:textColor="@color/black"
                 android:paddingTop="5dp"

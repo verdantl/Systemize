@@ -53,7 +53,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         duration = findViewById(R.id.duration);
         duration.setText("All Day");
         taskName = findViewById(R.id.task_name);
-
+        System.out.println(date.getText());
 //        setUpDatabase();
 
     }
@@ -64,7 +64,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         ContentValues contentValues = new ContentValues();
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_TASK, String.valueOf(taskName.getText()));
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY, String.valueOf(category));
-        contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DATE, String.valueOf(date));
+        contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DATE, String.valueOf(date.getText()));
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED, false);
         db.insert(TaskContract.TaskEntry.TABLE_NAME, null,
                 contentValues);
@@ -93,5 +93,6 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
 
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         date.setText(currentDateString);
+        System.out.println(date.getText());
     }
 }
