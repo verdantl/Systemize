@@ -62,7 +62,6 @@ public class HomeFragment extends Fragment {
         c.set(Calendar.MONTH, LocalDate.now().getMonthValue());
         c.set(Calendar.DAY_OF_MONTH, LocalDate.now().getDayOfMonth());
         String date = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
-
         SQLiteDatabase db = new TaskHelper(Objects.requireNonNull(getActivity()).
                 getApplicationContext()).getReadableDatabase();
         String sortOrder =

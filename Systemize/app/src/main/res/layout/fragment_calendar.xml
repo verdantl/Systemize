@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -19,8 +20,97 @@
         android:textColor="@color/black"
         android:textSize="35sp"
         android:fontFamily="@font/futura_medium"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:background="@color/white"
+        android:tint="@color/black"
+        app:layout_constraintTop_toTopOf="@id/week"
+        app:layout_constraintBottom_toBottomOf="@id/week"
+        app:layout_constraintRight_toLeftOf="@id/week"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:contentDescription="left arrow" />
+    <LinearLayout
+        android:id="@+id/week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="7"
 
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/month"
+        app:layout_constraintBottom_toTopOf="@id/upcoming_title">
+        <include
+            android:id="@+id/sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_day"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            />
+        <include
+            android:id="@+id/monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_day"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            />
+        <include
+            android:id="@+id/tuesday"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_day"
+            android:layout_weight="1"
+            />
+        <include
+            android:id="@+id/wednesday"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_day"
+            android:layout_weight="1"
+            />
+        <include
+            android:id="@+id/thursday"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_day"
+            android:layout_weight="1"
+            />
+        <include
+            android:id="@+id/friday"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_day"
+            android:layout_weight="1"
+            />
+        <include
+            android:id="@+id/saturday"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/card_day"
+            android:layout_weight="1"
+            />
 
+    </LinearLayout>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
+        android:background="@color/white"
+        android:tint="@color/black"
+        app:layout_constraintTop_toTopOf="@id/week"
+        app:layout_constraintBottom_toBottomOf="@id/week"
+        app:layout_constraintLeft_toRightOf="@id/week"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="left arrow" />
     <TextView
         android:id="@+id/upcoming_title"
         android:layout_width="wrap_content"
