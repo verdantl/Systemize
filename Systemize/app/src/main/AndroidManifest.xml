@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/systemize_logo_white"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TaskSelection"></activity>
+        <activity android:name=".PaletteSelection"></activity>
+        <activity android:name=".TaskSelection" />
         <activity android:name=".NewTaskActivity" />
         <activity android:name=".OnboardingActivity1" />
         <activity android:name=".HomeScreenActivity" />
