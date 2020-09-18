@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Create New Task"
         android:textSize="35sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/futura"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
