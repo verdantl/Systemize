@@ -8,6 +8,7 @@
     android:background="@color/peach"
     tools:context=".OnboardingActivity1">
 
+<!--    change margins to bias-->
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
