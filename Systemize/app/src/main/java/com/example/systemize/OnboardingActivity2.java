@@ -10,6 +10,6 @@ public class OnboardingActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_onboarding1);
+        setContentView(R.layout.activity_onboarding2);
     }
 }

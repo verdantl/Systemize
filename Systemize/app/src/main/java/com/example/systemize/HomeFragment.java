@@ -35,7 +35,10 @@ public class HomeFragment extends Fragment {
 
     private void buildRecyclerView(View view){
         recyclerView = view.findViewById(R.id.recycler_view);
-        readDatabase();
+//        readDatabase();
+        taskList = new ArrayList<>();
+        taskList.add(new TaskItem(1, "Title 1","", false ));
+        taskList.add(new TaskItem(1, "Title 2","", true ));
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium));
