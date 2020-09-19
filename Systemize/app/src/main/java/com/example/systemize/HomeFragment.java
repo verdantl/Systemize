@@ -91,11 +91,7 @@ public class HomeFragment extends ListFragment {
     }
 
     private void readDatabase(){
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, LocalDate.now().getYear());
-        c.set(Calendar.MONTH, LocalDate.now().getMonthValue());
-        c.set(Calendar.DAY_OF_MONTH, LocalDate.now().getDayOfMonth());
-        String date = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        String date = LocalDate.now().toString();
         SQLiteDatabase db = new TaskHelper(Objects.requireNonNull(getActivity()).
                 getApplicationContext()).getReadableDatabase();
         String sortOrder =

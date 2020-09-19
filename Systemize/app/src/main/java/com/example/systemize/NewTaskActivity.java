@@ -30,6 +30,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     private EditText taskName;
     private Spinner spinner;
     private String category;
+    private LocalDate saveDate;
 
     private SQLiteDatabase db;
     private boolean canSave;
@@ -38,6 +39,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
+        saveDate = LocalDate.now();
         final String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.style_spinner,
                 new ArrayList<>(Arrays.asList(categories)));
@@ -79,7 +81,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         ContentValues contentValues = new ContentValues();
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_TASK, String.valueOf(taskName.getText()));
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY, String.valueOf(category));
-        contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DATE, String.valueOf(date.getText()));
+        contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DATE, saveDate.toString());
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED, false);
         db.insert(TaskContract.TaskEntry.TABLE_NAME, null,
                 contentValues);
@@ -104,7 +106,6 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     }
 
     public void onDurationClicked(View view){
-
     }
 
     @Override
@@ -114,6 +115,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, day);
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        saveDate = LocalDate.parse(String.valueOf(year) + '-' + String.valueOf(month) + "-" + String.valueOf(day));
 //        System.out.println(LocalDate.parse(String.valueOf());
         date.setText(currentDateString);
     }
