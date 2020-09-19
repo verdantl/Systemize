@@ -127,7 +127,7 @@
         android:textSize="25sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintVertical_bias="0.45"
+        app:layout_constraintVertical_bias="0.39"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
