@@ -58,8 +58,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_card, parent, false);
-        ListViewHolder lvh = new ListViewHolder(v, listener);
-        return lvh;
+        return new ListViewHolder(v, listener);
     }
 
     @Override

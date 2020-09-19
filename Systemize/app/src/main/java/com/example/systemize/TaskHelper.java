@@ -11,6 +11,7 @@ public class TaskHelper extends SQLiteOpenHelper {
                     TaskContract.TaskEntry.COLUMN_NAME_TASK + " TEXT," +
                     TaskContract.TaskEntry.COLUMN_NAME_CATEGORY + " TEXT," +
                     TaskContract.TaskEntry.COLUMN_NAME_DATE + " TEXT," +
+                    TaskContract.TaskEntry.COLUMN_NAME_DURATION + " TEXT," +
                     TaskContract.TaskEntry.COLUMN_NAME_COMPLETED + " TEXT)";
 
     private static final String SQL_DELETE_ENTRIES =

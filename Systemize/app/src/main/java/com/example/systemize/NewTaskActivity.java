@@ -8,11 +8,14 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
@@ -29,16 +32,29 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     private String category;
 
     private SQLiteDatabase db;
+    private boolean canSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
-        String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School"};
+        final String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.style_spinner,
                 new ArrayList<>(Arrays.asList(categories)));
         spinner = findViewById(R.id.choose_category);
         spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                category = categories[i];
+                canSave = true;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                canSave = false;
+            }
+        });
         setUp();
 
     }
@@ -57,7 +73,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
 
     }
 
-    private void setUpDatabase(){
+    private void writeToDatabase(){
         TaskHelper taskHelper = new TaskHelper(getApplicationContext());
         db = taskHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -70,7 +86,13 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     }
 
     public void onCreateTaskClicked(View view){
-        taskName.getText();
+        if (canSave){
+            writeToDatabase();
+        }
+        else{
+            Toast.makeText(this, "You must pick a category.", Toast.LENGTH_LONG).show();
+        }
+        //writeToDatabase();
     }
 
     public void onCalendarClicked(View view){
@@ -92,6 +114,5 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
 
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         date.setText(currentDateString);
-        System.out.println(date.getText());
     }
 }

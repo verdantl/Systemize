@@ -13,5 +13,6 @@ public final class TaskContract {
         public static final String COLUMN_NAME_CATEGORY = "Category";
         public static final String COLUMN_NAME_DATE = "Date";
         public static final String COLUMN_NAME_COMPLETED = "Completed";
+        public static final String COLUMN_NAME_DURATION = "Duration";
     }
 }
