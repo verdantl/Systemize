@@ -55,8 +55,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette1_1"
-            ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette1_1" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -66,8 +65,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette1_2"
-            ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette1_2" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -77,8 +75,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette1_3"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette1_3" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -88,8 +85,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette1_4"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette1_4" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -99,14 +95,13 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette1_5"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette1_5" />
         </GridLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:textColor="@color/black"
             android:text="Earth"
             />
@@ -133,8 +128,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette2_1"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette2_1" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -144,8 +138,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette2_2"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette2_2" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -155,8 +148,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette2_3"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette2_3" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -166,8 +158,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette2_4"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette2_4" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -177,14 +168,13 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette2_5"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette2_5" />
         </GridLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:textColor="@color/black"
             android:text="Pop"
             />
@@ -210,8 +200,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette3_1"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette3_1" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -221,8 +210,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette3_2"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette3_2" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -232,8 +220,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette3_3"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette3_3" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -243,8 +230,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette3_4"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette3_4" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -254,14 +240,13 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_rowWeight="1"
-                app:cardBackgroundColor="@color/palette3_5"
-                ></androidx.cardview.widget.CardView>
+                app:cardBackgroundColor="@color/palette3_5" />
         </GridLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:textColor="@color/black"
             android:text="Nautical"
             />
@@ -273,7 +258,7 @@
         android:layout_height="47dp"
         android:background="@drawable/next_button"
         android:text="finish"
-        android:fontFamily="@font/futura"
+        android:fontFamily="@font/futura_medium"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.873"
