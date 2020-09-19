@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TaskSelection"
-    android:background="@color/peach"
+    android:background="@color/beige"
     >
 
-    <!--reduce size of icons-->
     <TextView
         android:id="@+id/check_off_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/futura"
         android:gravity="left"
-        android:text="Now check off which types of \ntasks you would like to track."
+        android:text="Here are some of the categories \nof tasks you can track."
         android:textColor="@color/black"
         android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@id/task_types"

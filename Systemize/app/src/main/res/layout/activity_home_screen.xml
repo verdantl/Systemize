@@ -4,7 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeScreenActivity">
+    tools:context=".HomeScreenActivity"
+    android:background="@drawable/rectangle">
+
+    <TextView
+        android:id="@+id/whats_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/did_you_know"
+        android:text="Hey, !\nWhat's on the agenda today?"
+        android:fontFamily="@font/futura_medium"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/did_you_know"
+        android:background="@drawable/style_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/peach"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/whats_up"
+        app:layout_constraintBottom_toTopOf="@id/no_tasks"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginLeft="18sp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/question_mark"
+                android:layout_weight=""/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/futura_medium"
+            android:padding="15dp"
+            android:textSize="17sp"
+            android:text="Did you know?"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/futura_medium"
+            android:padding="15dp"
+            android:textSize="13sp"
+            android:text="See your weekly productivity summary\non your profile."
+            android:textColor="@color/black"/>
+        </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/no_tasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/did_you_know"
+        app:layout_constraintBottom_toTopOf="@id/add_prompt"
+        android:text="You don't have any \ntasks yet!"
+        android:fontFamily="@font/futura_medium"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/add_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Click on the '+' button\nbelow to add \nsomething."
+        app:layout_constraintVertical_bias="0.56"
+        android:fontFamily="@font/futura_medium"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
     <FrameLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
@@ -15,21 +112,22 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.999"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        app:fabCustomSize="100dp"
-        android:backgroundTint="@color/peach"
-        app:maxImageSize="100dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
         android:onClick="onNewTaskClicked"
-        android:src="@drawable/ic_baseline_arrow_drop_down_circle_24"
-        app:rippleColor="@color/olive"
-        android:layout_margin="16dp" />
+        android:src="@drawable/add"
+        app:fabCustomSize="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_prompt"
+        app:maxImageSize="100dp"
+        app:rippleColor="@color/blue"
+        app:layout_constraintVertical_bias="0.53"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -42,6 +140,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_navigation" />
+        app:menu="@menu/bottom_navigation"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
