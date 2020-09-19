@@ -13,17 +13,34 @@
         android:layout_height="0dp"
         tools:layout="@layout/fragment_task_list"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.999"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        app:fabCustomSize="100dp"
+        android:backgroundTint="@color/peach"
+        app:maxImageSize="100dp"
+        android:src="@drawable/ic_baseline_arrow_drop_down_circle_24"
+        app:rippleColor="@color/olive"
+        android:layout_margin="16dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:background="?android:attr/windowBackground"
+        app:itemIconSize="50dp"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="#F5F4F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:itemIconTint="@color/black"
-        app:menu="@menu/bottom_navigation"
-        android:id="@+id/bottom_nav"
-        android:background="?android:attr/windowBackground"
-        />
+        app:menu="@menu/bottom_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
