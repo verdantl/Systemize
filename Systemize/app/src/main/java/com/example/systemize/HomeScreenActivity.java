@@ -47,13 +47,14 @@ public class HomeScreenActivity extends AppCompatActivity {
                             selectedFragment = new HomeFragment();
                             break;
                         case R.id.nav_settings:
-                            selectedFragment = new SettingFragment();
+//                            selectedFragment = new SettingFragment();
                             break;
                         case R.id.nav_user:
-                            selectedFragment = new UserFragment();
+//                            selectedFragment = new UserFragment();
                             break;
                     }
                     assert selectedFragment != null;
+
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
                     return true;

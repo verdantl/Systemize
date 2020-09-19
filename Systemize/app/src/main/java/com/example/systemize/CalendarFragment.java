@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
-public class CalendarFragment extends Fragment {
+public class CalendarFragment extends ListFragment {
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
     private ArrayList<TaskItem> taskList;
@@ -43,7 +43,7 @@ public class CalendarFragment extends Fragment {
         taskList.add(new TaskItem(1, "Title 2","", true ));
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium));
+        listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium), this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listAdapter);
 
@@ -93,4 +93,10 @@ public class CalendarFragment extends Fragment {
         cursor.close();
 
     }
+
+    @Override
+    public void saveCompletion(TaskItem taskItem) {
+
+    }
+
 }

@@ -1,9 +1,11 @@
 package com.example.systemize;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.provider.FontsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends ListFragment {
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
     private ArrayList<TaskItem> taskList;
@@ -33,15 +35,47 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    public void saveCompletion(TaskItem taskItem){
+        TaskHelper helper = new TaskHelper(Objects.requireNonNull(getActivity()).getApplicationContext());
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED, String.valueOf(taskItem.getCompleted()));
+        String selection = BaseColumns._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(taskItem.getID())};
+        int count = db.update(TaskContract.TaskEntry.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        helper.close();
+    }
+
+    private void testCompletion(int id){
+        SQLiteDatabase db = new TaskHelper(Objects.requireNonNull(getActivity()).
+                getApplicationContext()).getReadableDatabase();
+        String sortOrder =
+                BaseColumns._ID + " DESC";
+
+        String selection = BaseColumns._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id)};
+        Cursor cursor = db.query(
+                TaskContract.TaskEntry.TABLE_NAME,
+                null,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder);
+        cursor.moveToFirst();
+        cursor.close();
+    }
     private void buildRecyclerView(View view){
         recyclerView = view.findViewById(R.id.recycler_view);
         readDatabase();
-        taskList = new ArrayList<>();
 //        taskList.add(new TaskItem(1, "Title 1","", false ));
 //        taskList.add(new TaskItem(1, "Title 2","", true ));
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium));
+        listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium), this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listAdapter);
 
@@ -49,6 +83,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(int position) {
                 taskList.get(position).changeCompleted();
+                saveCompletion(taskList.get(position));
+                testCompletion(taskList.get(position).getID());
             }
         });
 

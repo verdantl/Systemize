@@ -83,12 +83,13 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED, false);
         db.insert(TaskContract.TaskEntry.TABLE_NAME, null,
                 contentValues);
+        taskHelper.close();
     }
 
     public void onCreateTaskClicked(View view){
         if (canSave){
             writeToDatabase();
-            finishActivity(RESULT_FIRST_USER);
+            finish();
         }
         else{
             Toast.makeText(this, "You must pick a category.", Toast.LENGTH_LONG).show();
@@ -114,7 +115,6 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         c.set(Calendar.DAY_OF_MONTH, day);
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         date.setText(currentDateString);
-        System.out.println(currentDateString);
     }
 
 }

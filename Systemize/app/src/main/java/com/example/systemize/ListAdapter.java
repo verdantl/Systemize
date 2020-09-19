@@ -1,6 +1,10 @@
 package com.example.systemize;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.provider.BaseColumns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +13,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
     private ArrayList<TaskItem> itemList;
     private Typeface typeface;
     private OnItemClickListener listener;
+    private ListFragment fragment;
+
 
     public interface OnItemClickListener{
         void onItemClick(int position);
@@ -29,6 +37,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         public CheckBox checkBox;
         public TextView textView;
         public ImageView category;
+        public ListFragment fragment;
+        public TaskItem taskItem;
 
         public ListViewHolder(@NonNull View itemView, final OnItemClickListener innerListener) {
             super(itemView);
@@ -42,6 +52,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION){
                             innerListener.onItemClick(position);
+                            fragment.saveCompletion(taskItem);
                         }
                     }
                 }
@@ -49,10 +60,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         }
     }
 
-    public ListAdapter(ArrayList<TaskItem> itemList, Typeface typeface){
+    public ListAdapter(ArrayList<TaskItem> itemList, Typeface typeface, ListFragment fragment){
         this.itemList = itemList;
         this.typeface = typeface;
-
+        this.fragment = fragment;
     }
     @NonNull
     @Override
@@ -68,6 +79,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         holder.textView.setTypeface(typeface);
         holder.category.setImageResource(taskItem.getCategoryImage());
         holder.checkBox.setChecked(taskItem.getCompleted());
+        holder.fragment = fragment;
+        holder.taskItem = taskItem;
     }
 
     @Override
