@@ -26,6 +26,7 @@
         app:fabCustomSize="100dp"
         android:backgroundTint="@color/peach"
         app:maxImageSize="100dp"
+        android:onClick="onNewTaskClicked"
         android:src="@drawable/ic_baseline_arrow_drop_down_circle_24"
         app:rippleColor="@color/olive"
         android:layout_margin="16dp" />

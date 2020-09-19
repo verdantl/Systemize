@@ -41,7 +41,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         final String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.style_spinner,
                 new ArrayList<>(Arrays.asList(categories)));
-        spinner = findViewById(R.id.choose_category);
+        spinner = findViewById(R.id.spinner_category);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -88,6 +88,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     public void onCreateTaskClicked(View view){
         if (canSave){
             writeToDatabase();
+            finishActivity(RESULT_FIRST_USER);
         }
         else{
             Toast.makeText(this, "You must pick a category.", Toast.LENGTH_LONG).show();
@@ -115,4 +116,5 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         date.setText(currentDateString);
         System.out.println(currentDateString);
     }
+
 }
