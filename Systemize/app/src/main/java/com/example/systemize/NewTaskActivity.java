@@ -114,6 +114,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, day);
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+//        System.out.println(LocalDate.parse(String.valueOf());
         date.setText(currentDateString);
     }
 

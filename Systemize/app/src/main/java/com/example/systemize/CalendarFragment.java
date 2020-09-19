@@ -58,7 +58,8 @@ public class CalendarFragment extends ListFragment {
         }
         month = LocalDate.now().getMonth();
         year = LocalDate.now().getYear();
-        String monthString = month.name().substring(0,1).toUpperCase() + month.name().substring(1).toLowerCase();
+        String monthString = month.name().substring(0,1).toUpperCase() +
+                month.name().substring(1).toLowerCase();
         monthText.setText(monthString + " " + year);
     }
 

@@ -11,16 +11,37 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class UserFragment extends Fragment {
-
+    private HorizontalBarChart horizontalBarChart;
+    private ArrayList<LocalDate> dates;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
+        horizontalBarChart = view.findViewById(R.id.bargraph);
+        setUpDates();
+        setUpGraph();
         return view;
+    }
+
+    private void setUpDates(){
+        LocalDate today = LocalDate.now();
+        LocalDate oneWeekBefore = today.minusDays(6);
+        while (oneWeekBefore != today){
+            dates.add(oneWeekBefore);
+            oneWeekBefore = oneWeekBefore.plusDays(1);
+        }
+        dates.add(today);
+    }
+
+    private void setUpGraph(){
+
     }
 
     private void readDatabase(){
