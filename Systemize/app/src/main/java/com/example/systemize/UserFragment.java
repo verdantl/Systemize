@@ -19,7 +19,6 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +44,6 @@ public class UserFragment extends Fragment {
         }
         setUpGraph();
 
-        test();
         return view;
     }
 
@@ -56,35 +54,31 @@ public class UserFragment extends Fragment {
         data = new HashMap<>();
         for (int i = 0; i < 7; i++){
             dates[i] = today.minusDays(i).toString();
-            data.put(today.minusDays(i).getDayOfWeek().toString(), new ArrayList<TaskItem>());
+            data.put(today.minusDays(i).toString(), new ArrayList<TaskItem>());
         }
     }
 
     private void test(){
-        for (String string: dates){
-            System.out.println(string);
-        }
-        for (String string: data.keySet()){
-            System.out.println(string);
-        }
+
     }
 
     private HashMap<String, Integer> getCategoryMap(String date){
+        System.out.println(date);
         HashMap<String, Integer> categoryMap = new HashMap<>();
         for (String category: categories){
             categoryMap.put(category, 0);
         }
         ArrayList<TaskItem> entries = data.get(date);
         if (entries != null) {
-
-
             for (TaskItem item : entries) {
                 if (item.getCompleted()) {
                     Integer old = categoryMap.get(item.getCategory());
                     categoryMap.replace(item.getCategory(), old + 1);
+                    System.out.println(item.getCompleted());
                 }
             }
         }
+        test();
         return categoryMap;
     }
 
@@ -97,13 +91,14 @@ public class UserFragment extends Fragment {
         for (int i=0; i < dates.length ; i++){
             float[] tasksPerCategory = new float[7]; //data for all 7 categories on a given day
             for (int j = 0; j < categories.length; j++){
-                int numTasksCompleted = getCategoryMap(dates[i]).get(categories[j]); //This is for the given category on a day
+                int numTasksCompleted = getCategoryMap(dates[i]).get(categories[j]);//This is for the given category on a day
                 if (numTasksCompleted > max){
                     max = numTasksCompleted;
                 }
                 tasksPerCategory[j] = numTasksCompleted;
                 values.add(new BarEntry(i, tasksPerCategory));
             }
+            test();
         }
         return values;
     }
@@ -138,7 +133,7 @@ public class UserFragment extends Fragment {
             String category = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY));
             boolean completed = Boolean.parseBoolean(cursor.getString(
                     cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED)));
-            Objects.requireNonNull(data.get(tempDate.getDayOfWeek().toString())).add(
+            Objects.requireNonNull(data.get(tempDate.toString())).add(
                     new TaskItem(id, title, category, completed));
         }
         cursor.close();
