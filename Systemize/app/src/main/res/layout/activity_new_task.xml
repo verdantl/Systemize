@@ -17,7 +17,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/table"/>
+        app:layout_constraintBottom_toTopOf="@id/task_name"/>
     
     <EditText
         android:layout_width="match_parent"
@@ -40,14 +40,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/task_name"
-        app:layout_constraintBottom_toTopOf="@id/choose_category">
+        app:layout_constraintBottom_toTopOf="@id/choose_category"
+        >
         <TableRow>
             <ImageButton
                 android:onClick="onCalendarClicked"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:src="@drawable/calendar"
                 android:contentDescription="calendarbutton"
                 android:background="@color/white"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"/>
             <TextView
                 android:id="@+id/date"
                 android:layout_height="match_parent"
@@ -57,6 +61,7 @@
                 android:paddingTop="5dp"
                 android:textColor="@color/black"
                 android:text="Friday or whatever"
+                android:layout_marginLeft="10dp"
                 />
         </TableRow>
         <TableRow>
@@ -67,7 +72,8 @@
                 android:background="@color/white"
                 android:contentDescription="duration"
                 android:onClick="onDurationClicked"
-                android:src="@drawable/clock_bigger" />
+                android:src="@drawable/clock_bigger"
+                android:layout_marginRight="10dp"/>/>
             <TextView
                 android:id="@+id/duration"
                 android:gravity="center_vertical"
@@ -77,6 +83,7 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/futura_medium"
                 android:text="the time"
+                android:layout_marginLeft="10dp"
                 />
         </TableRow>
     </TableLayout>
@@ -84,53 +91,46 @@
 
     <LinearLayout
         android:id="@+id/choose_category"
-        android:background="@drawable/style_spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/set_reminder"
+        android:background="@drawable/style_spinner"
+        android:gravity="center"
         android:orientation="horizontal"
-        >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/futura_medium"
-        android:padding="15dp"
-        android:textSize="20sp"
-        android:text="Choose category"
-        android:textColor="@color/black"/>
-
-    <Spinner
-        android:id="@+id/spinner_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/style_spinner"
-        app:layout_constraintBottom_toTopOf="@id/set_reminder"
+        app:layout_constraintTop_toBottomOf="@id/table"
+        app:layout_constraintBottom_toTopOf="@id/journal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/table" />
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/futura_medium"
+            android:padding="15dp"
+            android:text="Choose category"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:background="@drawable/style_spinner"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_constraintBottom_toTopOf="@id/set_reminder"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table"
+            android:layout_weight="1" />
 
 
     </LinearLayout>
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_baseline_keyboard_arrow_down_bigger"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/set_reminder"
-        app:layout_constraintTop_toBottomOf="@id/table"
-        app:layout_constraintHorizontal_bias="0.74"
-        />
-
-
-    <ImageView
+        android:id="@+id/journal"
         android:layout_width="310dp"
         android:layout_height="317dp"
         android:src="@drawable/journal"
@@ -144,7 +144,7 @@
     <LinearLayout
         android:id="@+id/set_reminder"
         android:background="@drawable/style_spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -152,6 +152,7 @@
         app:layout_constraintTop_toBottomOf="@id/table"
         app:layout_constraintBottom_toTopOf="@id/create_button"
         android:orientation="horizontal"
+        android:gravity="center"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -160,11 +161,13 @@
             android:padding="15dp"
             android:textSize="20sp"
             android:text="Set Reminder"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:layout_weight="1"/>
 
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             />
     </LinearLayout>
 

@@ -9,7 +9,8 @@
                     <padding android:right="10dp"/>
                 </shape>
             </item>
-<!--            <item android:drawable="@drawable/ic_baseline_arrow_drop_down_circle_24">-->
+<!--            <item>-->
+<!--                <bitmap android:gravity="center|end" android:src="@drawable/ic_baseline_keyboard_arrow_down_bigger"/>-->
 <!--            </item>-->
         </layer-list>
     </item>
