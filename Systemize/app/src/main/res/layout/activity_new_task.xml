@@ -50,6 +50,7 @@
                 android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/date"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/futura_medium"
                 android:textSize="24sp"
@@ -59,7 +60,6 @@
                 />
         </TableRow>
         <TableRow>
-
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,6 +74,7 @@
                 android:textSize="24sp"
                 android:textColor="@color/black"
                 android:paddingTop="5dp"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/futura_medium"
                 android:text="the time"
                 />
