@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,11 +25,14 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
     }
 
-    public void onChecked(View view){
+    public void onNewTaskClicked(View view){
+        Intent intent = new Intent(this, NewTaskActivity.class);
+        startActivityForResult(intent, RESULT_FIRST_USER);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -44,12 +48,14 @@ public class HomeScreenActivity extends AppCompatActivity {
                             selectedFragment = new HomeFragment();
                             break;
                         case R.id.nav_settings:
-                            selectedFragment = new SettingFragment();
+//                            selectedFragment = new SettingFragment();
                             break;
                         case R.id.nav_user:
-                            selectedFragment = new UserFragment();
+//                            selectedFragment = new UserFragment();
                             break;
                     }
+                    assert selectedFragment != null;
+
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
                     return true;

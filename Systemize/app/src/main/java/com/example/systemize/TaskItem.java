@@ -18,6 +18,11 @@ public class TaskItem {
 
     public void changeCompleted(){
         completed = !completed;
+
+    }
+
+    public int getID(){
+        return id;
     }
     private void setImage(){
         switch (category){
