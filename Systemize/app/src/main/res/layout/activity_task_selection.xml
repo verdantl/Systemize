@@ -206,6 +206,6 @@
         app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:fontFamily="@font/futura"
+        android:fontFamily="@font/futura_medium"
         app:layout_constraintTop_toBottomOf="@id/task_types"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

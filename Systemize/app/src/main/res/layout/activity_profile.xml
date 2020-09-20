@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile"
+    android:background="@color/beige"
+    >
+    <TextView
+        android:id="@+id/photo_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finally, choose a photo for\nyour profile and write a little\nbio about yourself."
+        android:textColor="@color/black"
+        android:fontFamily="@font/futura_medium"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/profile_pic"
+        />
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/change_photo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/profile_pic"
+        />
+
+    <TextView
+        android:id="@+id/change_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Profile Photo"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/futura_medium"
+        android:textSize="17sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profile_pic"
+        app:layout_constraintBottom_toBottomOf="@id/user_info"
+        />
+
+    <LinearLayout
+        android:id="@+id/user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        app:layout_constraintTop_toBottomOf="@id/profile_pic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginStart="20dp"
+        >
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/finish_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:fontFamily="@font/futura_medium"
+        android:textSize="17sp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/occupation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Occupation"
+        android:textColor="@color/black"
+        android:fontFamily="@font/futura_medium"
+        android:textSize="17sp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/bio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/occupation"
+        app:layout_constraintBottom_toTopOf="Finish"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Bio"
+        android:textColor="@color/black"
+        android:fontFamily="@font/futura_medium"
+        android:textSize="17sp"
+        />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/finish_button"
+        android:layout_width="116dp"
+        android:layout_height="47dp"
+        android:background="@drawable/next_button"
+        android:text="Finish"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/user_info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:fontFamily="@font/futura_medium"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
