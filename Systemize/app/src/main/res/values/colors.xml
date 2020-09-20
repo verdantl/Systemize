@@ -37,5 +37,11 @@
     <color name="palette3_4">#FF715B</color>
     <color name="palette3_5">#2F2F2F</color>
     <color name="grey2">#9B9B9B</color>
-    <color name="beige">#F2E5D7</color>#F2E5D7
+    <color name="beige">#F2E5D7</color>
+    <color name="work_colour">#6280E9</color>
+    <color name="social_colour">#FF8D7C</color>
+    <color name="school_colour">#89A0EF</color>
+    <color name="personal_colour">#84DCC6</color>
+    <color name="family_colour"></color>
+    <color name="finances_colour"></color>
 </resources>
