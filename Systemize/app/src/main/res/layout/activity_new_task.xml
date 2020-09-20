@@ -93,14 +93,14 @@
         app:layout_constraintBottom_toTopOf="@id/set_reminder"
         android:orientation="horizontal"
         >
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="@font/futura_medium"-->
-<!--        android:padding="15dp"-->
-<!--        android:textSize="20sp"-->
-<!--        android:text="Choose category"-->
-<!--        android:textColor="@color/black"/>-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/futura_medium"
+        android:padding="15dp"
+        android:textSize="20sp"
+        android:text="Choose category"
+        android:textColor="@color/black"/>
 
     <Spinner
         android:id="@+id/spinner_category"
