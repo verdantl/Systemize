@@ -28,8 +28,8 @@ public class CalendarFragment extends ListFragment {
     private ArrayList<TaskItem> taskList;
     private String date;
     private LocalDate sunday;
+    private LocalDate firstSunday;
     private LocalDate nextSunday;
-    private TextView monthText;
     private Month month;
     private int year;
     private View calendarView;
@@ -39,8 +39,8 @@ public class CalendarFragment extends ListFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
-        monthText = view.findViewById(R.id.month);
         calendarView = view;
+        date = LocalDate.now().toString();
         setUpDate();
         setUpArrows();
         buildRecyclerView(view);
@@ -57,6 +57,7 @@ public class CalendarFragment extends ListFragment {
                 moveLeft();
             }
         });
+        left.setBackgroundColor(0);
 
         right.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,14 +65,33 @@ public class CalendarFragment extends ListFragment {
                 moveRight();
             }
         });
+        right.setBackgroundColor(0);
     }
 
     private void moveLeft(){
-        System.out.println("We moving left");
+        sunday = sunday.minusDays(7);
+        nextSunday = nextSunday.minusDays(7);
+        if (sunday.equals(firstSunday)) {
+            date = LocalDate.now().toString();
+        }
+        else{
+            date = sunday.toString();
+        }
+        setCalendar(calendarView);
+        buildRecyclerView(calendarView);
     }
 
     private void moveRight(){
-
+        sunday = sunday.plusDays(7);
+        nextSunday = nextSunday.plusDays(7);
+        if (sunday.equals(firstSunday)) {
+            date = LocalDate.now().toString();
+        }
+        else{
+            date = sunday.toString();
+        }
+        setCalendar(calendarView);
+        buildRecyclerView(calendarView);
     }
 
     private void setCalendar(View view){
@@ -85,9 +105,44 @@ public class CalendarFragment extends ListFragment {
             dayName.setText(text);
             TextView numDay = view.findViewById(days[i]).findViewById(R.id.date_num);
             numDay.setText(String.valueOf(temp.getDayOfMonth()));
+            view.findViewById(days[i]).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    resetClickedColors();
+                    seeUpcomingTasks(view);
+                }
+            });
             i++;
             temp = temp.plusDays(1);
         }
+        resetClickedColors();
+        month = sunday.getMonth();
+        String monthString = month.name().substring(0,1).toUpperCase() +
+                month.name().substring(1).toLowerCase();
+        TextView monthText = view.findViewById(R.id.month);
+        monthText.setText(monthString + " " + year);
+    }
+
+    private void resetClickedColors(){
+        int[] days = {R.id.sunday, R.id.monday, R.id.tuesday, R.id.wednesday, R.id.thursday,
+                R.id.friday, R.id.saturday};
+        for (int i = 0; i < days.length; i++){
+            calendarView.findViewById(days[i]).setBackgroundColor(0);
+        }
+    }
+
+    private void seeUpcomingTasks(View view){
+        taskList = new ArrayList<>();
+        view.setBackgroundColor(getResources().getColor(R.color.yellow));
+        TextView textView = view.findViewById(R.id.date_num);
+        String dateNum = textView.getText().toString();
+        LocalDate tempNew = sunday;
+        while (!String.valueOf(tempNew.getDayOfMonth()).equals(dateNum)){
+
+            tempNew = tempNew.plusDays(1);
+        }
+        date = tempNew.toString();
+        buildRecyclerView(calendarView);
     }
 
     private void setUpDate(){
@@ -103,15 +158,14 @@ public class CalendarFragment extends ListFragment {
         }
         month = LocalDate.now().getMonth();
         year = LocalDate.now().getYear();
-        String monthString = month.name().substring(0,1).toUpperCase() +
-                month.name().substring(1).toLowerCase();
-        monthText.setText(monthString + " " + year);
+        firstSunday = sunday;
+        setCalendar(calendarView);
     }
 
 
     private void buildRecyclerView(View view){
         recyclerView = view.findViewById(R.id.upcoming_tasks);
-        readDatabase();
+        readWeeklyDatabase(date);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium), this);
@@ -126,9 +180,16 @@ public class CalendarFragment extends ListFragment {
         });
     }
 
-    private void readDatabase(){
-        String date = LocalDate.now().toString();
+    private void readWeeklyDatabase(String startDay){
+        taskList = new ArrayList<>();
+        LocalDate temp = LocalDate.parse(startDay);
+        while (!temp.equals(nextSunday)){
+            readDatabase(temp.toString());
+            temp = temp.plusDays(1);
 
+        }
+    }
+    private void readDatabase(String date){
         SQLiteDatabase db = new TaskHelper(Objects.requireNonNull(getActivity()).
                 getApplicationContext()).getReadableDatabase();
         String sortOrder =
@@ -144,7 +205,6 @@ public class CalendarFragment extends ListFragment {
                 null,
                 null,
                 sortOrder);
-        taskList = new ArrayList<>();
         while (cursor.moveToNext()){
             int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
             String title = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_TASK));
@@ -154,6 +214,7 @@ public class CalendarFragment extends ListFragment {
             taskList.add(new TaskItem(id, title, category, completed));
         }
         cursor.close();
+        db.close();
 
     }
 

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="50dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="50dp"
+    app:cardCornerRadius="10dp"
     app:cardBackgroundColor="@color/peach"
     android:layout_margin="10dp">
     <LinearLayout
         android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:weightSum="7">
         <CheckBox
@@ -22,16 +22,18 @@
 
         <TextView
             android:id="@+id/task_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:fontFamily="@font/futura_medium"
+            android:textColor="@color/black"
             android:layout_weight="4"/>
 
         <ImageView
             android:id="@+id/category"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:src="@drawable/home"
-            android:layout_weight="1"
             android:contentDescription="category" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

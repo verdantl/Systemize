@@ -117,6 +117,7 @@ public class HomeFragment extends ListFragment {
             taskList.add(new TaskItem(id, title, category, completed));
         }
         cursor.close();
+        db.close();
 
     }
 
