@@ -20,6 +20,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/edit_profile"
         android:text="Edit Profile"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -45,6 +46,7 @@
         />
 
     <TextView
+        android:id="@+id/name_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sam The Man"
@@ -80,6 +82,7 @@
             android:layout_width="20dp"
             android:layout_height="match_parent"/>
         <TextView
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sam The Man"
@@ -110,6 +113,7 @@
             android:layout_width="20dp"
             android:layout_height="match_parent"/>
         <TextView
+            android:id="@+id/occupation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Small Business Owner"
@@ -142,6 +146,7 @@
             android:layout_width="20dp"
             android:layout_height="match_parent"/>
         <TextView
+            android:id="@+id/bio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="I'm a fun guy :)"

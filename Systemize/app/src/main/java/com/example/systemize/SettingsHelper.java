@@ -10,7 +10,7 @@ public class SettingsHelper extends SQLiteOpenHelper {
                     SettingsContract.SettingsEntry._ID + " INTEGER PRIMARY KEY, " +
                     SettingsContract.SettingsEntry.COLUMN_NAME_NAME + " TEXT," +
                     SettingsContract.SettingsEntry.COLUMN_NAME_PRODUCTIVITY + " TEXT," +
-                    SettingsContract.SettingsEntry.COLUMN_NAME_USERNAME + " TEXT," +
+                    SettingsContract.SettingsEntry.COLUMN_NAME_IMAGE + " TEXT," +
                     SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION + " TEXT," +
                     SettingsContract.SettingsEntry.COLUMN_NAME_BIO+ " TEXT," +
                     SettingsContract.SettingsEntry.COLUMN_NAME_PRODUCTIVITY + " TEXT)";
