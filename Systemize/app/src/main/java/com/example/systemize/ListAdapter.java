@@ -13,11 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
     private ArrayList<TaskItem> itemList;
@@ -39,9 +38,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         public ImageView category;
         public ListFragment fragment;
         public TaskItem taskItem;
+        public CardView itemView;
 
         public ListViewHolder(@NonNull View itemView, final OnItemClickListener innerListener) {
             super(itemView);
+            this.itemView = (CardView) itemView;
             checkBox = itemView.findViewById(R.id.completed);
             textView = itemView.findViewById(R.id.task_name);
             category = itemView.findViewById(R.id.category);
@@ -81,6 +82,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         holder.checkBox.setChecked(taskItem.getCompleted());
         holder.fragment = fragment;
         holder.taskItem = taskItem;
+        holder.itemView.setCardBackgroundColor(taskItem.getColor());
     }
 
     @Override
