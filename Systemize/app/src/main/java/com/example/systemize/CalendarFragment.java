@@ -8,21 +8,18 @@ import android.provider.BaseColumns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.Year;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Objects;
 
 public class CalendarFragment extends ListFragment {
@@ -31,19 +28,66 @@ public class CalendarFragment extends ListFragment {
     private ArrayList<TaskItem> taskList;
     private String date;
     private LocalDate sunday;
-    private LocalDate saturday;
+    private LocalDate nextSunday;
     private TextView monthText;
     private Month month;
     private int year;
+    private View calendarView;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         monthText = view.findViewById(R.id.month);
+        calendarView = view;
         setUpDate();
+        setUpArrows();
         buildRecyclerView(view);
+        setCalendar(view);
         return view;
+    }
+
+    private void setUpArrows(){
+        ImageButton left = calendarView.findViewById(R.id.left_arrow);
+        ImageButton right = calendarView.findViewById(R.id.right_arrow);
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moveLeft();
+            }
+        });
+
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moveRight();
+            }
+        });
+    }
+
+    private void moveLeft(){
+        System.out.println("We moving left");
+    }
+
+    private void moveRight(){
+
+    }
+
+    private void setCalendar(View view){
+        int[] days = {R.id.sunday, R.id.monday, R.id.tuesday, R.id.wednesday, R.id.thursday,
+                R.id.friday, R.id.saturday};
+        int i = 0;
+        LocalDate temp = sunday;
+        while (i < 7){
+            TextView dayName = view.findViewById(days[i]).findViewById(R.id.day_of_week);
+            String text = String.valueOf(temp.getDayOfWeek().name().charAt(0));
+            dayName.setText(text);
+            TextView numDay = view.findViewById(days[i]).findViewById(R.id.date_num);
+            numDay.setText(String.valueOf(temp.getDayOfMonth()));
+            i++;
+            temp = temp.plusDays(1);
+        }
     }
 
     private void setUpDate(){
@@ -52,9 +96,10 @@ public class CalendarFragment extends ListFragment {
         while (sunday.getDayOfWeek() != DayOfWeek.SUNDAY){
             sunday = sunday.minusDays(1);
         }
-        saturday = today;
-        while (saturday.getDayOfWeek() != DayOfWeek.SATURDAY){
-            saturday = saturday.plusDays(1);
+        nextSunday = today;
+        nextSunday = nextSunday.plusDays(1);
+        while (nextSunday.getDayOfWeek() != DayOfWeek.SUNDAY){
+            nextSunday = nextSunday.plusDays(1);
         }
         month = LocalDate.now().getMonth();
         year = LocalDate.now().getYear();
@@ -77,8 +122,6 @@ public class CalendarFragment extends ListFragment {
             @Override
             public void onItemClick(int position) {
                 taskList.get(position).changeCompleted();
-                System.out.println(taskList.get(position).getTitle());
-                System.out.println(taskList.get(position).getCompleted());
             }
         });
     }

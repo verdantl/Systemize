@@ -20,10 +20,10 @@
         android:textSize="35sp"
         android:fontFamily="@font/futura_medium"/>
     <ImageButton
+        android:id="@+id/left_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_arrow_back_24"
-        android:background="@color/white"
         android:tint="@color/black"
         app:layout_constraintTop_toTopOf="@id/week"
         app:layout_constraintBottom_toBottomOf="@id/week"
@@ -100,10 +100,10 @@
 
     </LinearLayout>
     <ImageButton
+        android:id="@+id/right_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_arrow_forward_24"
-        android:background="@color/white"
         android:tint="@color/black"
         app:layout_constraintTop_toTopOf="@id/week"
         app:layout_constraintBottom_toBottomOf="@id/week"
