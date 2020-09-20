@@ -26,13 +26,58 @@ public class TaskItem {
     }
     private void setImage(){
         switch (category){
-            case "":
-                categoryImage = R.drawable.ic_baseline_home_24;
+            case "Work":
+                categoryImage = R.drawable.work;
+                break;
+            case "Personal":
+                categoryImage = R.drawable.user;
+                break;
+            case "Social":
+                categoryImage = R.drawable.hug;
+                break;
+            case "Finances":
+                categoryImage = R.drawable.bill;
+                break;
+            case "Family":
+                categoryImage = R.drawable.family;
+                break;
+            case "School":
+                categoryImage = R.drawable.knowledge;
                 break;
             default:
                 break;
         }
     }
+
+    public int getColor(){
+        int color;
+        switch (category) {
+            case "Work":
+                color = R.color.yellow;
+                break;
+            case "Personal":
+                color = R.color.white;
+                break;
+            case "Social":
+                color = R.color.peach;
+                break;
+            case "Finances":
+                color = R.color.dark_peach;
+                break;
+            case "Family":
+                color = R.color.light_peach;
+                categoryImage = R.drawable.family;
+                break;
+            case "School":
+                color = R.color.blue;
+                break;
+            default:
+                color = R.color.light_peach;
+                break;
+        }
+        return color;
+    }
+
     public String getCategory(){
         return category;
     }
