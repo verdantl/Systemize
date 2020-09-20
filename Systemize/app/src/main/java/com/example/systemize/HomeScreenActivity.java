@@ -50,8 +50,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                             selectedFragment = new HomeFragment();
                             fab.show();
                             break;
-                        case R.id.nav_settings:
-//                            selectedFragment = new SettingFragment();
+                        case R.id.nav_profile:
+                            selectedFragment = new ProfileFragment();
                             fab.hide();
                             break;
                         case R.id.nav_user:
