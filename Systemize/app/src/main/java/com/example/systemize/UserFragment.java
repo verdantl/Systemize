@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class UserFragment extends Fragment {
-    private BarChart barChart;
+    private HorizontalBarChart barChart;
     private String[] dates;
     private String dateString;
     private HashMap<String, ArrayList<TaskItem>> data; //Date to list of tasks on that date
