@@ -14,20 +14,21 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class HomeScreenActivity extends AppCompatActivity {
-
+    private FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new HomeFragment()).commit();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-
+        fab = findViewById(R.id.fab);
     }
 
     public void onNewTaskClicked(View view){
@@ -43,15 +44,19 @@ public class HomeScreenActivity extends AppCompatActivity {
                     switch (item.getItemId()){
                         case R.id.nav_calendar:
                             selectedFragment = new CalendarFragment();
+                            fab.hide();
                             break;
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
+                            fab.show();
                             break;
                         case R.id.nav_settings:
 //                            selectedFragment = new SettingFragment();
+                            fab.hide();
                             break;
                         case R.id.nav_user:
                             selectedFragment = new UserFragment();
+                            fab.hide();
                             break;
                     }
                     assert selectedFragment != null;

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,6 +83,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_TASK, String.valueOf(taskName.getText()));
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY, String.valueOf(category));
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DATE, saveDate.toString());
+        System.out.println(saveDate);
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED, false);
         db.insert(TaskContract.TaskEntry.TABLE_NAME, null,
                 contentValues);
@@ -114,9 +116,9 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, day);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
-        saveDate = LocalDate.parse(String.valueOf(year) + '-' + String.valueOf(month) + "-" + String.valueOf(day));
-//        System.out.println(LocalDate.parse(String.valueOf());
+        saveDate = LocalDate.parse(format.format(c.getTime()));
         date.setText(currentDateString);
     }
 
