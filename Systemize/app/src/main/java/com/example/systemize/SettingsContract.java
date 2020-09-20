@@ -9,9 +9,10 @@ public final class SettingsContract {
 
     public static class SettingsEntry implements BaseColumns {
         public static final String TABLE_NAME = "Settings";
-        public static final String COLUMN_NAME_COLORS = "Colors";
         public static final String COLUMN_NAME_NAME = "Name";
-        public static final String COLUMN_NAME_CATEGORIES = "Categories";
         public static final String COLUMN_NAME_PRODUCTIVITY = "Productivity";
+        public static final String COLUMN_NAME_IMAGE = "Image";
+        public static final String COLUMN_NAME_OCCUPATION = "Occupation";
+        public static final String COLUMN_NAME_BIO = "Bio";
     }
 }
