@@ -40,7 +40,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
         saveDate = LocalDate.now();
-        final String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School"};
+        final String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School", "Other"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.style_spinner,
                 new ArrayList<>(Arrays.asList(categories)));
         spinner = findViewById(R.id.spinner_category);

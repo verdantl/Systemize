@@ -51,7 +51,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 //                            selectedFragment = new SettingFragment();
                             break;
                         case R.id.nav_user:
-//                            selectedFragment = new UserFragment();
+                            selectedFragment = new UserFragment();
                             break;
                     }
                     assert selectedFragment != null;
