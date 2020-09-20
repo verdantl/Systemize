@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view){
-        Intent intent = new Intent(this, HomeScreenActivity.class);
+        Intent intent = new Intent(this, OnboardingActivity1.class);
         startActivity(intent);
     }
 
