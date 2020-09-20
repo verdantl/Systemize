@@ -7,35 +7,43 @@
     android:backgroundTint="@color/peach"
     app:cardCornerRadius="20dp">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_marginLeft="18sp">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_person_24"
-            android:contentDescription="image" />
+            android:src="@drawable/question_mark"
+            android:layout_weight=""/>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:padding="5dp"
-                android:fontFamily="@font/futura_bold"
-                android:layout_height="wrap_content"
-                android:text="Did you know?"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:fontFamily="@font/futura_medium"
-                android:text="See your weekly productivity summary \n on your profile."/>
+                android:padding="15dp"
+                android:textSize="17sp"
+                android:text="Did you know?"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/futura_medium"
+                android:padding="15dp"
+                android:textSize="13sp"
+                android:text="See your weekly productivity summary\non your profile."
+                android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>
+
 
 
 </androidx.cardview.widget.CardView>
