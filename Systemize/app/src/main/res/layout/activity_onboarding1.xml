@@ -8,45 +8,34 @@
     android:background="@color/beige"
     tools:context=".OnboardingActivity1">
 
-<!--    change margins to bias-->
     <TextView
-        android:id="@+id/welcome_text"
+        android:id="@+id/get_started"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/futura"
-
-        android:text="Welcome to \nsystemize!"
+        android:fontFamily="@font/futura_medium"
+        android:text="To get started, tell\n us your name."
         android:textColor="@color/black"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@id/welcome_enter_text"
-        app:layout_constraintLeft_toLeftOf="@id/welcome_description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/welcome_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/futura"
-        android:text="To get started tell us \nyour name."
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/welcome_enter_text"
-        app:layout_constraintLeft_toLeftOf="@id/welcome_enter_text"
-        app:layout_constraintTop_toTopOf="@id/welcome_text" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:fontFamily="@font/futura"
+        android:fontFamily="@font/futura_medium"
         android:hint="Type your name here"
         android:id="@+id/welcome_enter_text"
-        android:textColor="@color/dark_gray"
+        android:textColorHint="@color/dark_gray"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.35"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/get_started"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.32"
         />
 
     <ImageView
@@ -58,8 +47,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcome_enter_text"
-        app:layout_constraintVertical_bias="0.632" />
+        app:layout_constraintTop_toBottomOf="@id/welcome_enter_text"/>
 
     <Button
         android:id="@+id/next_button"
