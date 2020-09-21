@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -34,12 +35,24 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText occupation;
     private EditText bio;
     private boolean first;
+    private String nameString;
+    private String productivity;
+    private TextView prompt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        first = Objects.requireNonNull(getIntent().getExtras()).getBoolean("First");
+        prompt = findViewById(R.id.photo_prompt);
+        if (first){
+            nameString = getIntent().getExtras().getString("Name");
+            productivity = getIntent().getExtras().getString("Productivity");
 
+        }
+        else{
+            prompt.setText("Choose a new photo or enter in new information.");
+        }
         setUpViews();
     }
 

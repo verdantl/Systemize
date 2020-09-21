@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                intent.putExtra("First", false);
                 Objects.requireNonNull(getActivity()).startActivity(intent);
 //                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_GALLERY);
                 //We start a new activity?
