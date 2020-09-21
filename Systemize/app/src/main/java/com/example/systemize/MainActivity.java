@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view){
-        Intent intent = new Intent(this, HomeScreenActivity.class);
+//        readDatabase();
+        Intent intent = new Intent(this, OnboardingActivity2.class);
         startActivity(intent);
     }
 
