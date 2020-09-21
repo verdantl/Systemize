@@ -3,6 +3,7 @@ package com.example.systemize;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,12 +13,14 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Set;
 
 public class EditProfileActivity extends AppCompatActivity {
     private final int REQUEST_CODE_GALLERY = 999;
@@ -48,6 +51,22 @@ public class EditProfileActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         occupation = findViewById(R.id.occupation);
         bio = findViewById(R.id.bio);
+        readDatabase();
+        Button button = findViewById(R.id.finish_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                storeImage(view);
+                storeInfo();
+                finish();
+            }
+        });
+        findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void chooseImage(){
@@ -61,6 +80,18 @@ public class EditProfileActivity extends AppCompatActivity {
         } catch (Exception e){
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void storeInfo(){
+        SettingsHelper helper = new SettingsHelper(getApplicationContext());
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_NAME, name.getText().toString());
+        contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION, occupation.getText().toString());
+        contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_BIO, bio.getText().toString());
+        db.insert(SettingsContract.SettingsEntry.TABLE_NAME, null,
+                contentValues);
+        helper.close();
     }
 
     private void readDatabase(){
@@ -80,13 +111,17 @@ public class EditProfileActivity extends AppCompatActivity {
                 null,
                 null,
                 sortOrder);
-        cursor.moveToFirst();
-        String nameString = cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_NAME));
-        name.setHint(nameString);
-        occupation.setHint(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION)));
-        bio.setHint(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_BIO)));
-        cursor.close();
-        helper.close();
+        if (cursor.moveToFirst()) {
+
+
+            String nameString = cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_NAME));
+
+            name.setHint(nameString);
+            occupation.setHint(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION)));
+            bio.setHint(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_BIO)));
+            cursor.close();
+            helper.close();
+        }
     }
 
     @Override
@@ -101,6 +136,13 @@ public class EditProfileActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void storeImage(View view){
+        if (image.getDrawable()!=null) {
+            SettingsHelper settingsHelper = new SettingsHelper(getApplicationContext());
+            settingsHelper.storeImage(new ModelClass("Image", imageToStore));
         }
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
@@ -40,7 +41,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         setUpViews(view);
-//        readDatabase();
+        readDatabase();
         TextView edit = view.findViewById(R.id.edit_profile);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,21 +85,33 @@ public class ProfileFragment extends Fragment {
         Cursor cursor = db.query(
                 SettingsContract.SettingsEntry.TABLE_NAME,
                 null,
-                selection,
-                selectionArgs,
+                null,
+                null,
                 null,
                 null,
                 sortOrder);
-        cursor.moveToFirst();
+        if (cursor.moveToFirst()) {
+            System.out.println("we here");
+            String nameString = cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_NAME));
 
+            nameTitle.setText(nameString);
+            name.setText(nameString);
+            occupation.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION)));
+            bio.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_BIO)));
+            cursor.close();
+        }
 
-        String nameString = cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_NAME));
+        cursor = db.rawQuery("select * from imageInfo", null);
+        if (cursor.getCount() != 0){
+            cursor.moveToFirst();
+            byte[] imageBytes = cursor.getBlob(cursor.getColumnIndex("image"));
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes,0, imageBytes.length);
+            image.setImageBitmap(bitmap);
 
-        nameTitle.setText(nameString);
-        name.setText(nameString);
-        occupation.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION)));
-        bio.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_BIO)));
-
+        }
+        else{
+            image.setImageResource(R.drawable.user);
+        }
         cursor.close();
         helper.close();
     }

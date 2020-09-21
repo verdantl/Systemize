@@ -14,8 +14,6 @@ public class SettingsHelper extends SQLiteOpenHelper {
             "CREATE TABLE IF NOT EXISTS " + SettingsContract.SettingsEntry.TABLE_NAME + "(" +
                     SettingsContract.SettingsEntry._ID + " INTEGER PRIMARY KEY, " +
                     SettingsContract.SettingsEntry.COLUMN_NAME_NAME + " TEXT," +
-                    SettingsContract.SettingsEntry.COLUMN_NAME_PRODUCTIVITY + " TEXT," +
-                    SettingsContract.SettingsEntry.COLUMN_NAME_IMAGE + " BLOB," +
                     SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION + " TEXT," +
                     SettingsContract.SettingsEntry.COLUMN_NAME_BIO+ " TEXT," +
                     SettingsContract.SettingsEntry.COLUMN_NAME_PRODUCTIVITY + " TEXT)";
@@ -26,7 +24,7 @@ public class SettingsHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + SettingsContract.SettingsEntry.TABLE_NAME;
 
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 4;
 
     public static final String DATABASE_NAME = "Tasks.db";
 
@@ -50,7 +48,6 @@ public class SettingsHelper extends SQLiteOpenHelper {
             imageToStoreBitmap.compress(Bitmap.CompressFormat.JPEG, 100, objectByteArrayOutputStream);
             imageInBytes = objectByteArrayOutputStream.toByteArray();
             ContentValues contentValues = new ContentValues();
-            contentValues.put("imageName", objectModelClass.getImageName());
             contentValues.put("image", imageInBytes);
             long value = db.insert("imageInfo", null, contentValues);
             if (value != 0){
