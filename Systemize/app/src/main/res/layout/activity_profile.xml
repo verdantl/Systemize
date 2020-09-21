@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile"
+    tools:context=".EditProfileActivity"
     android:background="@color/beige"
     >
     <TextView
         android:id="@+id/photo_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:text="Finally, choose a photo for\nyour profile and write a little\nbio about yourself."
         android:textColor="@color/black"
         android:fontFamily="@font/futura_medium"
@@ -21,10 +22,10 @@
         app:layout_constraintBottom_toTopOf="@id/profile_pic"
         />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_pic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:layout_constraintBottom_toTopOf="@id/change_photo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -68,7 +69,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/finish_button"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Name"
+        android:hint="Name"
         android:textColor="@color/black"
         android:fontFamily="@font/futura_medium"
         android:textSize="17sp"
@@ -82,7 +83,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Occupation"
+        android:hint="Occupation"
         android:textColor="@color/black"
         android:fontFamily="@font/futura_medium"
         android:textSize="17sp"
@@ -94,9 +95,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/occupation"
-        app:layout_constraintBottom_toTopOf="Finish"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Bio"
+        android:hint="Bio"
         android:textColor="@color/black"
         android:fontFamily="@font/futura_medium"
         android:textSize="17sp"
@@ -104,6 +104,20 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.90"
+        app:layout_constraintHorizontal_bias="0.1"
+        android:text="Cancel"
+        android:fontFamily="@font/futura_medium"
+        android:textColor="@color/gray"
+        android:textSize="15sp"/>
     <Button
         android:id="@+id/finish_button"
         android:layout_width="116dp"

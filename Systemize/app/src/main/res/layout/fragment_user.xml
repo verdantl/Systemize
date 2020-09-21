@@ -13,7 +13,7 @@
         app:layout_constraintHorizontal_bias="0.10"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_bias="0.03"
         android:text="Profile"
         android:textSize="35sp"
         android:fontFamily="@font/futura_medium"
@@ -27,7 +27,7 @@
         android:text="Here is an overview of your task breakdown and productivity"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintVertical_bias="0.12"
         app:layout_constraintLeft_toLeftOf="@id/profile_title"
         android:maxWidth="350dp"
         android:textSize="15sp"
@@ -35,6 +35,7 @@
         android:textColor="@color/black"/>
     
     <TextView
+        android:id="@+id/taskBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Task Balance"
@@ -44,16 +45,21 @@
         app:layout_constraintLeft_toLeftOf="@id/profile_title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.25"/>
+        app:layout_constraintVertical_bias="0.23"/>
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:padding="20dp"
+        android:foregroundGravity="center_horizontal"
+        android:layout_height="450dp"
         android:id="@+id/bargraph"
-        app:layout_constraintLeft_toLeftOf="@id/profile_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.6"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintTop_toBottomOf="@id/taskBalance"/>
 
 
 

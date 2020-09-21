@@ -17,7 +17,7 @@ public class TaskHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TaskContract.TaskEntry.TABLE_NAME;
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "Tasks.db";
 
     public TaskHelper(Context context) {
@@ -33,5 +33,9 @@ public class TaskHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
+    }
+
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onUpgrade(db, oldVersion, newVersion);
     }
 }

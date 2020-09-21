@@ -209,9 +209,11 @@ public class CalendarFragment extends ListFragment {
             int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
             String title = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_TASK));
             String category = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY));
+            String duration = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_DURATION));
+            String tempDate = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_DATE));
             boolean completed = Boolean.parseBoolean(cursor.getString(
                     cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED)));
-            taskList.add(new TaskItem(id, title, category, completed));
+            taskList.add(new TaskItem(id, title, category, completed, tempDate, duration));
         }
         cursor.close();
         db.close();

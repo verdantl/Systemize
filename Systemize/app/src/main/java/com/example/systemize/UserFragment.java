@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,18 @@ import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,9 +37,10 @@ public class UserFragment extends Fragment {
     private HorizontalBarChart barChart;
     private String[] dates;
     private String dateString;
+    private String[] datesOfWeek;
     private HashMap<String, ArrayList<TaskItem>> data; //Date to list of tasks on that date
     private final String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School", "Other"};
-    private int[] colorArray = {Color.BLACK, Color.BLUE, Color.YELLOW, Color.GRAY, Color.GREEN, Color.CYAN, Color.MAGENTA};
+    private int[] colorArray;
 
     @Nullable
     @Override
@@ -42,28 +52,31 @@ public class UserFragment extends Fragment {
             dateString = date;
             readDatabase();
         }
+        colorArray = new int[]{getResources().getColor(R.color.work_colour),
+                getResources().getColor(R.color.personal_colour),
+                getResources().getColor(R.color.social_colour),
+                getResources().getColor(R.color.finances_colour),
+                getResources().getColor(R.color.family_colour),
+                getResources().getColor(R.color.school_colour),
+                R.color.olive};
         setUpGraph();
-
         return view;
     }
 
     private void setUpDates(){
         LocalDate today = LocalDate.now();
-        LocalDate start = today.minusDays(6);
         dates = new String[7];
         data = new HashMap<>();
+        datesOfWeek = new String[7];
         for (int i = 0; i < 7; i++){
             dates[i] = today.minusDays(i).toString();
             data.put(today.minusDays(i).toString(), new ArrayList<TaskItem>());
+            datesOfWeek[i] = today.minusDays(i).getDayOfWeek().toString();
         }
     }
 
-    private void test(){
-
-    }
 
     private HashMap<String, Integer> getCategoryMap(String date){
-        System.out.println(date);
         HashMap<String, Integer> categoryMap = new HashMap<>();
         for (String category: categories){
             categoryMap.put(category, 0);
@@ -74,19 +87,14 @@ public class UserFragment extends Fragment {
                 if (item.getCompleted()) {
                     Integer old = categoryMap.get(item.getCategory());
                     categoryMap.replace(item.getCategory(), old + 1);
-                    System.out.println(item.getCompleted());
                 }
             }
         }
-        test();
         return categoryMap;
     }
 
     private ArrayList<BarEntry> dataValues(){
         ArrayList<BarEntry> values = new ArrayList<>();
-//        values.add(new BarEntry(0, new float[]{0, 3, 5}));
-//        values.add(new BarEntry(1, new float[]{1, 5, 2}));
-//        values.add(new BarEntry(2, new float[]{, 3, 5}));
         int max = 0;
         for (int i=0; i < dates.length ; i++){
             float[] tasksPerCategory = new float[7]; //data for all 7 categories on a given day
@@ -98,16 +106,52 @@ public class UserFragment extends Fragment {
                 tasksPerCategory[j] = numTasksCompleted;
                 values.add(new BarEntry(i, tasksPerCategory));
             }
-            test();
         }
         return values;
     }
 
     private void setUpGraph(){
         BarDataSet barDataSet = new BarDataSet(dataValues(), null);
+        barDataSet.setStackLabels(categories);
+        barDataSet.setDrawIcons(true);
         barDataSet.setColors(colorArray);
+        barDataSet.setDrawValues(false);
         BarData barData = new BarData((barDataSet));
+        barData.setValueFormatter(new MyYAxisValueFormatter());
         barChart.setData(barData);
+        barChart.setDrawGridBackground(false);
+        barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(datesOfWeek));
+        barChart.getDescription().setEnabled(false);
+        barChart.getAxisLeft().setDrawLabels(false);
+        barChart.getAxisLeft().setDrawAxisLine(false);
+
+        barChart.setDrawBarShadow(false);
+        barChart.setPinchZoom(false);
+        XAxis xAxis = barChart.getXAxis();
+        barChart.getXAxis().setDrawGridLines(false);
+        barChart.getAxisLeft().setDrawGridLines(false);
+        barChart.getAxisRight().setDrawGridLines(false);
+        barChart.getAxisRight().setDrawAxisLine(false);
+        barChart.getAxisRight().setDrawLabels(false);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawAxisLine(false);
+        barChart.animateY(1000);
+        barChart.getLegend().setWordWrapEnabled(true);
+        barChart.invalidate();
+    }
+
+    public class MyYAxisValueFormatter extends ValueFormatter {
+
+        private DecimalFormat mFormat;
+
+        public MyYAxisValueFormatter(){
+            mFormat = new DecimalFormat("###,###,##0");
+        }
+
+        @Override
+        public String getFormattedValue(float value) {
+            return mFormat.format(value);
+        }
     }
 
     private void readDatabase(){
@@ -133,8 +177,10 @@ public class UserFragment extends Fragment {
             String category = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY));
             boolean completed = Boolean.parseBoolean(cursor.getString(
                     cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED)));
+            String duration = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_DURATION));
+            String temporaryDate = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_DATE));
             Objects.requireNonNull(data.get(tempDate.toString())).add(
-                    new TaskItem(id, title, category, completed));
+                    new TaskItem(id, title, category, completed, temporaryDate, duration));
         }
         cursor.close();
     }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
+    private boolean first;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +43,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else{
-            Intent intent = new Intent(this, OnboardingActivity1.class);
-            startActivity(intent);
+            if (first) {
+                setContentView(R.layout.activity_task_selection);
+            }
+            else{
+                Intent intent = new Intent(this, OnboardingActivity1.class);
+                startActivity(intent);
+            }
+
         }
 
         cursor.close();
@@ -52,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view){
-        Intent intent = new Intent(this, HomeScreenActivity.class);
-        startActivity(intent);
+        readDatabase();
     }
 
 }
