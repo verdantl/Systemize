@@ -127,7 +127,4 @@ public class HomeFragment extends ListFragment {
 
     }
 
-    private void updateRecycler(){
-    }
-
 }

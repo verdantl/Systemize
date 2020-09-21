@@ -36,6 +36,7 @@ public class TaskItem {
     public int getID(){
         return id;
     }
+
     private void setImage(){
         switch (category){
             case "Work":
@@ -56,6 +57,8 @@ public class TaskItem {
             case "School":
                 categoryImage = R.drawable.knowledge;
                 break;
+            case "Other":
+                categoryImage = R.drawable.question_mark;
             default:
                 break;
         }

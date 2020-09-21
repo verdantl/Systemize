@@ -1,11 +1,13 @@
 package com.example.systemize;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +53,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.style_spinner,
                 new ArrayList<>(Arrays.asList(categories)));
         spinner = findViewById(R.id.spinner_category);
+        spinner.setPopupBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.style_spinner));
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
