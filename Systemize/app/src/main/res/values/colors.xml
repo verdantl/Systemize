@@ -42,6 +42,6 @@
     <color name="social_colour">#FF8D7C</color>
     <color name="school_colour">#89A0EF</color>
     <color name="personal_colour">#84DCC6</color>
-    <color name="family_colour"></color>
-    <color name="finances_colour"></color>
+    <color name="family_colour">#FFE293</color>
+    <color name="finances_colour">#89A0EF</color>
 </resources>
