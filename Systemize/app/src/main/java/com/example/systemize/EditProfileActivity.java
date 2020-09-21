@@ -8,10 +8,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +33,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText name;
     private EditText occupation;
     private EditText bio;
+    private boolean first;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class EditProfileActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         occupation = findViewById(R.id.occupation);
         bio = findViewById(R.id.bio);
+        imageToStore = ((BitmapDrawable) image.getDrawable()).getBitmap();
         readDatabase();
         Button button = findViewById(R.id.finish_button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -89,8 +93,20 @@ public class EditProfileActivity extends AppCompatActivity {
         contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_NAME, name.getText().toString());
         contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION, occupation.getText().toString());
         contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_BIO, bio.getText().toString());
-        db.insert(SettingsContract.SettingsEntry.TABLE_NAME, null,
-                contentValues);
+        if (first) {
+            db.insert(SettingsContract.SettingsEntry.TABLE_NAME, null,
+                    contentValues);
+            System.out.println("first");
+        }
+        else{
+            String selection = BaseColumns._ID + " = ?";
+            String[] selectionArgs = {"1"};
+            db.update(SettingsContract.SettingsEntry.TABLE_NAME,
+                    contentValues,
+                    selection,
+                    selectionArgs);
+            System.out.println(name.getText().toString());
+        }
         helper.close();
     }
 
@@ -111,17 +127,12 @@ public class EditProfileActivity extends AppCompatActivity {
                 null,
                 null,
                 sortOrder);
-        if (cursor.moveToFirst()) {
+        if (!cursor.moveToFirst()) {
+            first = true;
 
-
-            String nameString = cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_NAME));
-
-            name.setHint(nameString);
-            occupation.setHint(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION)));
-            bio.setHint(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_BIO)));
-            cursor.close();
-            helper.close();
         }
+        cursor.close();
+        helper.close();
     }
 
     @Override

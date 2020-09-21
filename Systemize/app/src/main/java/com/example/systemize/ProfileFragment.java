@@ -79,25 +79,23 @@ public class ProfileFragment extends Fragment {
         SQLiteDatabase db = helper.getReadableDatabase();
         String sortOrder =
                 BaseColumns._ID + " DESC";
-
         String selection = BaseColumns._ID + " = ?";
         String[] selectionArgs = {"1"};
         Cursor cursor = db.query(
                 SettingsContract.SettingsEntry.TABLE_NAME,
                 null,
-                null,
-                null,
+                selection,
+                selectionArgs,
                 null,
                 null,
                 sortOrder);
         if (cursor.moveToFirst()) {
-            System.out.println("we here");
             String nameString = cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_NAME));
-
             nameTitle.setText(nameString);
             name.setText(nameString);
             occupation.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION)));
             bio.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_BIO)));
+            System.out.println(nameString);
             cursor.close();
         }
 
