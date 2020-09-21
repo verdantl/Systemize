@@ -110,7 +110,6 @@ public class EditProfileActivity extends AppCompatActivity {
             contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_PRODUCTIVITY, productivity);
             db.insert(SettingsContract.SettingsEntry.TABLE_NAME, null,
                     contentValues);
-            System.out.println("first");
         }
         else{
             String selection = BaseColumns._ID + " = ?";
