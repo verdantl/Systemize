@@ -71,8 +71,6 @@ public class HomeFragment extends ListFragment {
     private void buildRecyclerView(View view){
         recyclerView = view.findViewById(R.id.recycler_view);
         readDatabase();
-//        taskList.add(new TaskItem(1, "Title 1","", false ));
-//        taskList.add(new TaskItem(1, "Title 2","", true ));
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium), this);
@@ -89,6 +87,7 @@ public class HomeFragment extends ListFragment {
         });
 
     }
+
 
     private void readDatabase(){
         String date = LocalDate.now().toString();
@@ -114,7 +113,9 @@ public class HomeFragment extends ListFragment {
             String category = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY));
             boolean completed = Boolean.parseBoolean(cursor.getString(
                     cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED)));
-            taskList.add(new TaskItem(id, title, category, completed));
+            String duration = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_DURATION));
+            String tempDate = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_DATE));
+            taskList.add(new TaskItem(id, title, category, completed, tempDate, duration));
         }
         cursor.close();
         db.close();

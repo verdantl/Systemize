@@ -74,10 +74,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        TaskItem taskItem = itemList.get(position);
+    public void onBindViewHolder(@NonNull final ListViewHolder holder, int position) {
+        final TaskItem taskItem = itemList.get(position);
         holder.textView.setText(taskItem.getTitle());
         holder.textView.setTypeface(typeface);
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.fragment.showFragment(taskItem);
+            }
+        });
         holder.category.setImageResource(taskItem.getCategoryImage());
         holder.checkBox.setChecked(taskItem.getCompleted());
         holder.fragment = fragment;

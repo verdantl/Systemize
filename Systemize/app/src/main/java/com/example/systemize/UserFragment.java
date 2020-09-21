@@ -134,8 +134,10 @@ public class UserFragment extends Fragment {
             String category = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY));
             boolean completed = Boolean.parseBoolean(cursor.getString(
                     cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED)));
+            String duration = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_DURATION));
+            String temporaryDate = cursor.getString(cursor.getColumnIndex(TaskContract.TaskEntry.COLUMN_NAME_DATE));
             Objects.requireNonNull(data.get(tempDate.toString())).add(
-                    new TaskItem(id, title, category, completed));
+                    new TaskItem(id, title, category, completed, temporaryDate, duration));
         }
         cursor.close();
     }

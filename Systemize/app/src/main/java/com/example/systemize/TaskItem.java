@@ -6,19 +6,31 @@ public class TaskItem {
     private String category;
     private boolean completed;
     private int categoryImage;
+    private String date;
+    private String duration;
 
 
-    public TaskItem(int id, String title, String category, boolean completed){
+    public TaskItem(int id, String title, String category, boolean completed, String date, String duration){
         this.id = id;
         this.title = title;
         this.category = category;
         this.completed = completed;
+        this.date = date;
+        this.duration = duration;
         setImage();
     }
 
     public void changeCompleted(){
         completed = !completed;
 
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getDuration(){
+        return duration;
     }
 
     public int getID(){
