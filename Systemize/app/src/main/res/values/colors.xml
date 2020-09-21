@@ -38,10 +38,12 @@
     <color name="palette3_5">#2F2F2F</color>
     <color name="grey2">#9B9B9B</color>
     <color name="beige">#F4F0EC</color>
-    <color name="work_colour">#6280E9</color>
-    <color name="social_colour">#FF8D7C</color>
-    <color name="school_colour">#89A0EF</color>
-    <color name="personal_colour">#84DCC6</color>
+    <color name="work_colour">#84DCC6</color>
+    <color name="social_colour">#FFA25D</color>
+    <color name="school_colour">#96DEF8</color>
+    <color name="personal_colour">#FF6978</color>
     <color name="family_colour">#FFE293</color>
     <color name="finances_colour">#89A0EF</color>
+    <color name="spinner_colour">#F4F0EC</color>
+    <color name="spinner_highlight">#F2E5D7</color>
 </resources>

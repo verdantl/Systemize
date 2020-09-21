@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/gear"
-        android:title="" />
+        android:id="@+id/nav_user"
+        android:icon="@drawable/user"
+        android:title=""/>
 
     <item
         android:id="@+id/nav_home"
@@ -16,8 +16,8 @@
         android:icon="@drawable/calendar"
         android:title=""/>
     <item
-        android:id="@+id/nav_user"
-        android:icon="@drawable/user"
-        android:title=""/>
+        android:id="@+id/stats"
+        android:icon="@drawable/bar_chart"
+        android:title="" />
 
 </menu>
