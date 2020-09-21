@@ -24,11 +24,11 @@ public class SettingsHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + SettingsContract.SettingsEntry.TABLE_NAME;
 
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 7;
 
-    public static final String DATABASE_NAME = "Tasks.db";
+    public static final String DATABASE_NAME = "Test1.db";
 
-    private static String createTableQuery = "create table imageInfo (imageName Text" + ", image BLOB)";
+    private static String createTableQuery = "create table if not exists imageInfo (imageName Text" + ", image BLOB)";
 
     public SettingsHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

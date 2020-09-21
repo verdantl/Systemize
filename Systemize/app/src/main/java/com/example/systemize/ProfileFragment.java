@@ -102,7 +102,7 @@ public class ProfileFragment extends Fragment {
 
         cursor = db.rawQuery("select * from imageInfo", null);
         if (cursor.getCount() != 0){
-            cursor.moveToFirst();
+            cursor.moveToLast();
             byte[] imageBytes = cursor.getBlob(cursor.getColumnIndex("image"));
             Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes,0, imageBytes.length);
             image.setImageBitmap(bitmap);

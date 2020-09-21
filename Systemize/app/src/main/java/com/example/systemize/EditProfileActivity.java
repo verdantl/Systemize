@@ -26,7 +26,6 @@ import java.util.Objects;
 import java.util.Set;
 
 public class EditProfileActivity extends AppCompatActivity {
-    private final int REQUEST_CODE_GALLERY = 999;
     private final int PICK_IMAGE_REQUEST = 100;
     private Uri imageFilePath;
     private Bitmap imageToStore;
@@ -65,6 +64,7 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
         name = findViewById(R.id.name);
+        name.setText(nameString);
         occupation = findViewById(R.id.occupation);
         bio = findViewById(R.id.bio);
         imageToStore = ((BitmapDrawable) image.getDrawable()).getBitmap();

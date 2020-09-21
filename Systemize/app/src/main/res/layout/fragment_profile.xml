@@ -33,7 +33,7 @@
         android:textSize="20sp"
         />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image"
         android:layout_width="100dp"
         android:layout_height="100dp"

@@ -52,13 +52,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view){
-        if (first) {
-            readDatabase();
-        }
-        else{
-            first = true;
-            setContentView(R.layout.activity_task_selection);
-        }
+        Intent intent = new Intent(this, HomeScreenActivity.class);
+        startActivity(intent);
+//        if (first) {
+//            readDatabase();
+//        }
+//        else{
+//            first = true;
+//            setContentView(R.layout.activity_task_selection);
+//        }
     }
 
 }
