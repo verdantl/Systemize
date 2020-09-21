@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
+    private boolean first;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +52,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClicked(View view){
-//        readDatabase();
-        Intent intent = new Intent(this, OnboardingActivity2.class);
-        startActivity(intent);
+        if (first) {
+            readDatabase();
+        }
+        else{
+            first = true;
+            setContentView(R.layout.activity_task_selection);
+        }
     }
 
 }

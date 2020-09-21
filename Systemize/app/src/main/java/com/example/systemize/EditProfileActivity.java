@@ -107,6 +107,7 @@ public class EditProfileActivity extends AppCompatActivity {
         contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION, occupation.getText().toString());
         contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_BIO, bio.getText().toString());
         if (first) {
+            contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_PRODUCTIVITY, productivity);
             db.insert(SettingsContract.SettingsEntry.TABLE_NAME, null,
                     contentValues);
             System.out.println("first");

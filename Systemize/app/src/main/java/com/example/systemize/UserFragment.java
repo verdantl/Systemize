@@ -30,7 +30,8 @@ public class UserFragment extends Fragment {
     private String dateString;
     private HashMap<String, ArrayList<TaskItem>> data; //Date to list of tasks on that date
     private final String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School", "Other"};
-    private int[] colorArray = {Color.BLACK, Color.BLUE, Color.YELLOW, Color.GRAY, Color.GREEN, Color.CYAN, Color.MAGENTA};
+    private int[] colorArray = {R.color.work_colour, R.color.personal_colour, R.color.social_colour, R.color.finances_colour,
+            R.color.family_colour, R.color.school_colour, R.color.olive};
 
     @Nullable
     @Override
