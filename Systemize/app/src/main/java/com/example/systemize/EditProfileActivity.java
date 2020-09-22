@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,19 +58,21 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void setUpViews(){
+
+        name = findViewById(R.id.name);
+        name.setText(nameString);
+        occupation = findViewById(R.id.occupation);
+        bio = findViewById(R.id.bio);
         image = findViewById(R.id.profile_pic);
+        readDatabase();
+
         findViewById(R.id.change_photo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 chooseImage();
             }
         });
-        name = findViewById(R.id.name);
-        name.setText(nameString);
-        occupation = findViewById(R.id.occupation);
-        bio = findViewById(R.id.bio);
         imageToStore = ((BitmapDrawable) image.getDrawable()).getBitmap();
-        readDatabase();
         Button button = findViewById(R.id.finish_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,7 +158,27 @@ public class EditProfileActivity extends AppCompatActivity {
             first = true;
 
         }
+        else{
+            String nameString = cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_NAME));
+            name.setText(nameString);
+            occupation.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION)));
+            bio.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_BIO)));
+        }
         cursor.close();
+
+        cursor = db.rawQuery("select * from imageInfo", null);
+        if (cursor.getCount() != 0){
+            cursor.moveToLast();
+            byte[] imageBytes = cursor.getBlob(cursor.getColumnIndex("image"));
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes,0, imageBytes.length);
+            image.setImageBitmap(bitmap);
+
+        }
+        else{
+            image.setImageResource(R.drawable.user);
+        }
+        cursor.close();
+
         helper.close();
     }
 
