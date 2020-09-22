@@ -113,7 +113,7 @@ public class UserFragment extends Fragment {
     private void setUpGraph(){
         BarDataSet barDataSet = new BarDataSet(dataValues(), null);
         barDataSet.setStackLabels(categories);
-        barDataSet.setDrawIcons(false);
+        barDataSet.setDrawIcons(true);
         barDataSet.setColors(colorArray);
         barDataSet.setDrawValues(false);
         BarData barData = new BarData((barDataSet));
@@ -122,6 +122,8 @@ public class UserFragment extends Fragment {
         barChart.setDrawGridBackground(false);
         barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(datesOfWeek));
         barChart.getDescription().setEnabled(false);
+        barChart.getAxisLeft().setDrawLabels(false);
+        barChart.getAxisLeft().setDrawAxisLine(false);
 
         barChart.setDrawBarShadow(false);
         barChart.setPinchZoom(false);
@@ -129,9 +131,12 @@ public class UserFragment extends Fragment {
         barChart.getXAxis().setDrawGridLines(false);
         barChart.getAxisLeft().setDrawGridLines(false);
         barChart.getAxisRight().setDrawGridLines(false);
-//        xAxis.setCenterAxisLabels(true);
+        barChart.getAxisRight().setDrawAxisLine(false);
+        barChart.getAxisRight().setDrawLabels(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawAxisLine(false);
         barChart.animateY(1000);
+        barChart.getLegend().setWordWrapEnabled(true);
         barChart.invalidate();
     }
 
