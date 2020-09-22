@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -15,16 +16,22 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 
-public class NewTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class NewTaskActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private TextView date;
     private TextView duration;
@@ -41,7 +48,8 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
         saveDate = LocalDate.now();
-        final String[] categories = {"Work", "Personal", "Social", "Finances", "Family", "School", "Other"};
+        final String[] categories = {"Work", "Personal                  ",
+                "Social", "Finances", "Family", "School", "Other"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.style_spinner,
                 new ArrayList<>(Arrays.asList(categories)));
         spinner = findViewById(R.id.spinner_category);
@@ -70,11 +78,12 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         c.set(Calendar.DAY_OF_MONTH, LocalDate.now().getDayOfMonth());
         date.setText(DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime()));
         duration = findViewById(R.id.duration);
-        duration.setText("All Day");
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm aa");
+        duration.setText(dateFormat.format(new Date()));
         taskName = findViewById(R.id.task_name);
-//        setUpDatabase();
 
     }
+
 
     private void writeToDatabase(){
         TaskHelper taskHelper = new TaskHelper(getApplicationContext());
@@ -83,7 +92,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_TASK, String.valueOf(taskName.getText()));
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY, String.valueOf(category));
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DATE, saveDate.toString());
-        System.out.println(saveDate);
+        contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DURATION, duration.getText().toString());
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED, false);
         db.insert(TaskContract.TaskEntry.TABLE_NAME, null,
                 contentValues);
@@ -98,7 +107,6 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         else{
             Toast.makeText(this, "You must pick a category.", Toast.LENGTH_LONG).show();
         }
-        //writeToDatabase();
     }
 
     public void onCalendarClicked(View view){
@@ -108,6 +116,8 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     }
 
     public void onDurationClicked(View view){
+        DialogFragment timePickerDialog  = new TimePickerFragment();
+        timePickerDialog.show(getSupportFragmentManager(), "Time Picker");
     }
 
     @Override
@@ -122,4 +132,18 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         date.setText(currentDateString);
     }
 
+    @Override
+    public void onTimeSet(TimePicker timePicker, int hours, int minutes) {
+        String temp = LocalTime.MIN.plus(Duration.ofMinutes(hours * 60 + minutes)).toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        try {
+            Date time = sdf.parse(temp);
+            SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm aa");
+            assert time != null;
+            duration.setText(sdf2.format(time));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
