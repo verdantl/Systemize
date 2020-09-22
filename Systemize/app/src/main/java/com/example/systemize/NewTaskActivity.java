@@ -41,7 +41,6 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     private LocalDate saveDate;
 
     private SQLiteDatabase db;
-    private boolean canSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +52,18 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.style_spinner,
                 new ArrayList<>(Arrays.asList(categories)));
         spinner = findViewById(R.id.spinner_category);
+        category = "Work";
         spinner.setPopupBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.style_spinner));
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 category = categories[i];
-                canSave = true;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                canSave = false;
+
             }
         });
         setUp();
@@ -101,13 +100,9 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
     }
 
     public void onCreateTaskClicked(View view){
-        if (canSave){
-            writeToDatabase();
-            finish();
-        }
-        else{
-            Toast.makeText(this, "You must pick a category.", Toast.LENGTH_LONG).show();
-        }
+        writeToDatabase();
+        finish();
+
     }
 
     public void onCalendarClicked(View view){

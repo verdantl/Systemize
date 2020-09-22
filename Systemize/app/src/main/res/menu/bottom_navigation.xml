@@ -17,7 +17,7 @@
         android:title=""/>
     <item
         android:id="@+id/nav_user"
-        android:icon="@drawable/gear"
+        android:icon="@drawable/bar_chart"
         android:title=""/>
 
 </menu>
