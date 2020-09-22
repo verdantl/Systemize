@@ -19,7 +19,7 @@ public abstract class ListFragment extends Fragment {
         Dialog dialog = new Dialog(Objects.requireNonNull(getActivity()));
         dialog.setContentView(R.layout.task_info_dialog);
 
-        dialog.findViewById(R.id.layout).setBackgroundColor(taskItem.getColor());
+        dialog.findViewById(R.id.layout).setBackgroundColor(getActivity().getResources().getColor(taskItem.getColor()));
 
         TextView task = dialog.findViewById(R.id.task_name);
         task.setText(taskItem.getTitle());

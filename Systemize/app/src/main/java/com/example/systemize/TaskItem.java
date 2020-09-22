@@ -65,26 +65,25 @@ public class TaskItem {
         int color;
         switch (category) {
             case "Work":
-                color = R.color.yellow;
+                color = R.color.work_colour;
                 break;
             case "Personal":
-                color = R.color.white;
+                color = R.color.personal_colour;
                 break;
             case "Social":
-                color = R.color.peach;
+                color = R.color.social_colour;
                 break;
             case "Finances":
-                color = R.color.dark_peach;
+                color = R.color.finances_colour;
                 break;
             case "Family":
-                color = R.color.light_peach;
-                categoryImage = R.drawable.family;
+                color = R.color.family_colour;
                 break;
             case "School":
-                color = R.color.blue;
+                color = R.color.school_colour;
                 break;
             default:
-                color = R.color.light_peach;
+                color = R.color.olive;
                 break;
         }
         return color;

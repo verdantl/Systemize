@@ -37,6 +37,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private String nameString;
     private String productivity;
     private TextView prompt;
+    private boolean imageChanged;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         }
         else{
-            prompt.setText("Choose a new photo or enter in new information.");
+            prompt.setText("Choose a new photo or enter\n in new information.");
         }
         setUpViews();
     }
@@ -120,13 +121,15 @@ public class EditProfileActivity extends AppCompatActivity {
                     contentValues);
         }
         else{
-            String selection = BaseColumns._ID + " = ?";
-            String[] selectionArgs = {"1"};
-            db.update(SettingsContract.SettingsEntry.TABLE_NAME,
-                    contentValues,
-                    selection,
-                    selectionArgs);
-            System.out.println(name.getText().toString());
+            if (contentValues.size() != 0) {
+                String selection = BaseColumns._ID + " = ?";
+                String[] selectionArgs = {"1"};
+
+                db.update(SettingsContract.SettingsEntry.TABLE_NAME,
+                        contentValues,
+                        selection,
+                        selectionArgs);
+            }
         }
         helper.close();
     }
@@ -165,6 +168,7 @@ public class EditProfileActivity extends AppCompatActivity {
             try {
                 imageToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), imageFilePath);
                 image.setImageBitmap(imageToStore);
+                imageChanged = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -172,7 +176,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void storeImage(View view){
-        if (image.getDrawable()!=null) {
+        if (image.getDrawable()!=null && imageChanged) {
             SettingsHelper settingsHelper = new SettingsHelper(getApplicationContext());
             settingsHelper.storeImage(new ModelClass("Image", imageToStore));
         }

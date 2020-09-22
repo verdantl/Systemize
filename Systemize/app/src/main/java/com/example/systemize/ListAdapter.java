@@ -88,7 +88,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         holder.checkBox.setChecked(taskItem.getCompleted());
         holder.fragment = fragment;
         holder.taskItem = taskItem;
-        holder.itemView.setCardBackgroundColor(taskItem.getColor());
+        holder.itemView.setCardBackgroundColor(fragment.getActivity().getResources().getColor(taskItem.getColor()));
     }
 
     @Override
