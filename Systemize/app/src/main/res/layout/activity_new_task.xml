@@ -48,33 +48,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/calendar"
+                android:padding="5dp"
                 android:contentDescription="calendarbutton"
                 android:background="@color/white"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"/>
+                android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/date"
+                android:padding="5dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/futura_medium"
                 android:textSize="20sp"
                 android:paddingTop="5dp"
                 android:textColor="@color/black"
-
-                android:layout_marginLeft="10dp"
                 />
         </TableRow>
         <TableRow>
             <ImageButton
+                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/white"
                 android:contentDescription="duration"
                 android:onClick="onDurationClicked"
-                android:src="@drawable/clock_bigger"
-                android:layout_marginRight="10dp"/>/>
+                android:src="@drawable/clock_bigger"/>
             <TextView
+                android:padding="5dp"
                 android:id="@+id/duration"
                 android:gravity="center_vertical"
                 android:textSize="20sp"
@@ -82,7 +82,6 @@
                 android:paddingTop="5dp"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/futura_medium"
-                android:layout_marginLeft="10dp"
                 />
         </TableRow>
     </TableLayout>
