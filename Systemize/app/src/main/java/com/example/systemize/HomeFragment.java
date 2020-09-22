@@ -9,27 +9,27 @@ import android.provider.FontsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Objects;
 
 public class HomeFragment extends ListFragment {
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
     private ArrayList<TaskItem> taskList;
+    private TextView noTasks;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
+        noTasks = view.findViewById(R.id.no_tasks);
         buildRecyclerView(view);
 
         return view;
@@ -71,21 +71,26 @@ public class HomeFragment extends ListFragment {
     private void buildRecyclerView(View view){
         recyclerView = view.findViewById(R.id.recycler_view);
         readDatabase();
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium), this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(listAdapter);
+        if (taskList.isEmpty()){
+            noTasks.setVisibility(View.VISIBLE);
+        }
+        else {
+            noTasks.setVisibility(View.INVISIBLE);
+            recyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium), this);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(listAdapter);
 
-        listAdapter.setOnItemClickListener(new ListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                taskList.get(position).changeCompleted();
-                saveCompletion(taskList.get(position));
-                testCompletion(taskList.get(position).getID());
-            }
-        });
-
+            listAdapter.setOnItemClickListener(new ListAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    taskList.get(position).changeCompleted();
+                    saveCompletion(taskList.get(position));
+                    testCompletion(taskList.get(position).getID());
+                }
+            });
+        }
     }
 
 

@@ -35,6 +35,7 @@
         android:textColor="@color/black"/>
     
     <TextView
+        android:id="@+id/taskBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Task Balance"
@@ -47,13 +48,15 @@
         app:layout_constraintVertical_bias="0.25"/>
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_width="350dp"
+        android:foregroundGravity="center_horizontal"
+        android:layout_height="450dp"
         android:id="@+id/bargraph"
         app:layout_constraintLeft_toLeftOf="@id/profile_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.6"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintTop_toBottomOf="@id/taskBalance"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 
