@@ -103,9 +103,17 @@ public class EditProfileActivity extends AppCompatActivity {
         SettingsHelper helper = new SettingsHelper(getApplicationContext());
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_NAME, name.getText().toString());
-        contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION, occupation.getText().toString());
-        contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_BIO, bio.getText().toString());
+        if (!name.getText().toString().isEmpty()) {
+            contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_NAME, name.getText().toString());
+        }
+        if (!occupation.getText().toString().isEmpty()){
+            contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION, occupation.getText().toString());
+        }
+        if (!bio.getText().toString().isEmpty()){
+            contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_BIO, bio.getText().toString());
+        }
+
+
         if (first) {
             contentValues.put(SettingsContract.SettingsEntry.COLUMN_NAME_PRODUCTIVITY, productivity);
             db.insert(SettingsContract.SettingsEntry.TABLE_NAME, null,
