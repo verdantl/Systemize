@@ -9,4 +9,11 @@
     <string name="calendarbutton">calendarbutton</string>
     <string name="task_name">Task Name</string>
     <string name="create_new_task">Create New Task</string>
+    <string name="pretty_productive">Pretty productive!</string>
+    <string name="next">Next</string>
+    <string name="productive">productive</string>
+    <string name="i_m_struggling_please_help">I\'m struggling — please help!</string>
+    <string name="i_m_alright_but_could_be_better">I\'m alright, but could be better!</string>
+    <string name="nice_to_meet_you">Nice to meet you!</string>
+    <string name="now_how_productive_would_nyou_say_you_are_each_week">Now, how productive would \nyou say you are each week?</string>
 </resources>

@@ -12,13 +12,15 @@
     <!-- add newline and user's name to nice to meet you text-->
     <TextView
         android:id="@+id/nice_to_meet_you_text"
+        android:padding="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/futura"
-        android:text="Nice to meet you,"
+        android:text="@string/nice_to_meet_you"
         android:textColor="@color/black"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@id/productiveness_prompt"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/productiveness_prompt"
 
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,13 +30,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/futura"
-        android:text="Now, how productive would \nyou say you are each week?"
+        android:text="@string/now_how_productive_would_nyou_say_you_are_each_week"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/options"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/nice_to_meet_you_text" />
 
 <!--fill boxes with white-->
     <LinearLayout
@@ -43,10 +47,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/next_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/nice_to_meet_you_text"
-        app:layout_constraintVertical_bias="0.45">
+        app:layout_constraintLeft_toLeftOf="@id/productiveness_prompt"
+        app:layout_constraintTop_toBottomOf="@id/productiveness_prompt"
+        app:layout_constraintVertical_bias="0.05"
+        android:padding="15dp">
 
         <CheckBox
             android:id="@+id/pretty_productive_text"
@@ -54,7 +58,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura"
             android:gravity="start"
-            android:text="Pretty productive!"
+            android:text="@string/pretty_productive"
             android:textColor="@color/black"
             android:textSize="19sp"
             app:layout_constraintBottom_toTopOf="@id/productive"
@@ -69,7 +73,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura"
             android:gravity="start"
-            android:text="I'm alright, but could be better!"
+            android:text="@string/i_m_alright_but_could_be_better"
             android:textColor="@color/black"
             android:textSize="19sp"
             app:layout_constraintBottom_toTopOf="@id/struggling_text"
@@ -84,7 +88,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/futura"
             android:gravity="start"
-            android:text="I'm struggling — please help!"
+            android:text="@string/i_m_struggling_please_help"
             android:textColor="@color/black"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -106,14 +110,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/options"
         app:layout_constraintVertical_bias="0.25"
-        android:contentDescription="productive" />
+        android:contentDescription="@string/productive" />
 
     <Button
         android:id="@+id/next_button"
         android:layout_width="116dp"
         android:layout_height="47dp"
         android:background="@drawable/next_button"
-        android:text="Next"
+        android:text="@string/next"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.873"
