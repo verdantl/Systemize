@@ -33,7 +33,7 @@ public abstract class ListFragment extends Fragment {
         c.set(Calendar.YEAR, newDate.getYear());
         c.set(Calendar.MONTH, newDate.getMonthValue() - 1);
         c.set(Calendar.DAY_OF_MONTH, newDate.getDayOfMonth());
-        date.setText(DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime()));
+        date.setText(DateFormat.getDateInstance().format(c.getTime()));
 
         ImageView category = dialog.findViewById(R.id.category);
         category.setImageResource(taskItem.getCategoryImage());

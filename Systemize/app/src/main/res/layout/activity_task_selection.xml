@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.05"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintHorizontal_bias="0.4"
         />
 
@@ -29,13 +29,15 @@
         android:id="@+id/help_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
         android:fontFamily="@font/futura_medium"
-        android:layout_marginRight="20dp"
+        android:layout_margin="20dp"
         android:text="@string/we_want_to_help_you_colour_code_your_daily_tasks_and_check_them_off_as_you_go"
         android:textColor="@color/black"
         android:textSize="19sp"
         app:layout_constraintBottom_toTopOf="@id/task_types"
-        app:layout_constraintLeft_toLeftOf="@id/welcome_message"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcome_message" />
 
     <ImageView
@@ -50,112 +52,116 @@
         app:layout_constraintRight_toRightOf="parent"
 
         />
-
     <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/help_message"
-        app:layout_constraintBottom_toTopOf="@id/next_button"
+        android:layout_height="120dp"
+        android:weightSum="2"
         android:id="@+id/task_types"
-        android:gravity="center">
-        <GridLayout
-            android:layout_width="350dp"
-            android:layout_height="120dp"
-            android:columnCount="2"
-            android:rowCount="1"
-            android:columnOrderPreserved="false"
-            app:layout_constraintBottom_toTopOf="@id/next_button"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/colour_prompt">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/help_message"
+        android:layout_marginTop="35dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/work"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/living"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/work"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/living"/>
 
-        </GridLayout>
+    </LinearLayout>
         <LinearLayout
+            app:layout_constraintTop_toBottomOf="@id/task_types"
+            android:id="@+id/work_living_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
+            android:weightSum="2"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/futura_medium"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textColor="@color/black"
-                android:text="Work"
-                android:layout_weight="2"
+                android:text="@string/work"
+                android:layout_weight="1"
                 android:gravity="center"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/futura_medium"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textColor="@color/black"
-                android:text="Personal  "
+                android:text="@string/personal"
                 android:layout_weight="1"
                 android:gravity="center"/>
         </LinearLayout>
-        <GridLayout
-            android:layout_width="350dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:columnCount="2"
-            android:rowCount="1"
-            android:columnOrderPreserved="false"
+            android:weightSum="2"
+            android:id="@+id/hug_bill"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/palette1">
+            app:layout_constraintTop_toBottomOf="@id/work_living_text">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:src="@drawable/hug"/>
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:src="@drawable/bill"/>
 
-        </GridLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp">
+            android:layout_marginBottom="15dp"
+            android:weightSum="2"
+            android:id="@+id/hug_bill_text"
+            app:layout_constraintTop_toBottomOf="@id/hug_bill"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_gravity="center_horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/futura_medium"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textColor="@color/black"
-                android:text="Social"
+                android:text="@string/social"
                 android:gravity="center"
-                android:layout_weight="4"
+                android:layout_weight="1"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/futura_medium"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textColor="@color/black"
-                android:text="Finances         "
+                android:text="@string/finances"
                 android:gravity="center"
                 android:layout_weight="1"
                 />
         </LinearLayout>
-        <GridLayout
-            android:layout_width="350dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:columnCount="2"
-            android:rowCount="1"
-            android:columnOrderPreserved="false"
-            android:layout_weight="8"
+            android:weightSum="2"
+            android:id="@+id/family_knowledge"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hug_bill_text"
             >
 
             <ImageView
@@ -167,19 +173,22 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/knowledge"/>
 
-        </GridLayout>
+        </LinearLayout>
         <LinearLayout
+            app:layout_constraintTop_toBottomOf="@id/family_knowledge"
+            android:id="@+id/family_knowledge_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/futura_medium"
                 android:textSize="17sp"
                 android:textColor="@color/black"
-                android:text="Family"
+                android:text="@string/family"
                 android:gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -187,12 +196,11 @@
                 android:fontFamily="@font/futura_medium"
                 android:textSize="17sp"
                 android:textColor="@color/black"
-                android:text="School         "
+                android:text="@string/school"
                 android:gravity="center"
                 android:layout_weight="1"
                 />
         </LinearLayout>
-    </LinearLayout>
 
     <Button
         android:id="@+id/next_button"
@@ -207,5 +215,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:fontFamily="@font/futura_medium"
-        app:layout_constraintTop_toBottomOf="@id/task_types"/>
+        app:layout_constraintTop_toBottomOf="@id/family_knowledge_text"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

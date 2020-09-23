@@ -80,7 +80,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         c.set(Calendar.YEAR, LocalDate.now().getYear());
         c.set(Calendar.MONTH, LocalDate.now().getMonthValue() - 1);
         c.set(Calendar.DAY_OF_MONTH, LocalDate.now().getDayOfMonth());
-        date.setText(DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime()));
+        date.setText(DateFormat.getDateInstance().format(c.getTime()));
         duration = findViewById(R.id.duration);
         DateFormat dateFormat = new SimpleDateFormat("hh:mm aa");
         duration.setText(dateFormat.format(new Date()));
@@ -127,7 +127,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, day);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        String currentDateString = DateFormat.getDateInstance().format(c.getTime());
         saveDate = LocalDate.parse(format.format(c.getTime()));
         date.setText(currentDateString);
     }

@@ -17,6 +17,12 @@
     <string name="nice_to_meet_you">Nice to meet you!</string>
     <string name="now_how_productive_would_nyou_say_you_are_each_week">Now, how productive would \nyou say you are each week?</string>
     <string name="welcome_to_systemize">Welcome to Systemize!</string>
-    <string name="we_want_to_help_you_colour_code_your_daily_tasks_and_check_them_off_as_you_go">We want to help you colour\n code your daily tasks and \ncheck them off as you go.</string>
+    <string name="we_want_to_help_you_colour_code_your_daily_tasks_and_check_them_off_as_you_go">We want to help you colour code your daily tasks and check them off as you go.</string>
     <string name="type_your_name_here">Type your name here</string>
+    <string name="work">Work</string>
+    <string name="personal">Personal</string>
+    <string name="social">Social</string>
+    <string name="finances">Finances</string>
+    <string name="family">Family</string>
+    <string name="school">School</string>
 </resources>
