@@ -8,7 +8,7 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <TableRow
         android:layout_margin="5dp">
@@ -73,6 +73,10 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"/>
         </LinearLayout>
+
+    </TableRow>
+    <TableRow
+        android:layout_margin="5dp">
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -93,9 +97,6 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"/>
         </LinearLayout>
-    </TableRow>
-    <TableRow
-        android:layout_margin="5dp">
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -136,6 +137,10 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"/>
         </LinearLayout>
+
+    </TableRow>
+    <TableRow
+        android:layout_margin="5dp">
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"

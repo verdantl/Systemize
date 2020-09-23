@@ -123,6 +123,7 @@ public class UserFragment extends Fragment {
         barDataSet.setDrawValues(false);
         BarData barData = new BarData((barDataSet));
         barData.setValueFormatter(new MyYAxisValueFormatter());
+        barData.setHighlightEnabled(false);
         barChart.setData(barData);
         barChart.setDrawGridBackground(false);
         barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(datesOfWeek));

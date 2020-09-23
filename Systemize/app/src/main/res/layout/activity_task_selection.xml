@@ -13,14 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/futura_medium"
-        android:gravity="left"
-        android:text="Welcome to Systemize!"
+        android:text="@string/welcome_to_systemize"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/help_message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05"
         android:textColor="@color/black"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.4"
         />
 
@@ -30,13 +30,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/futura_medium"
-        android:gravity="left"
-        android:text="We want to help you colour code\nyour daily tasks and check them off\nas you go."
+        android:layout_marginRight="20dp"
+        android:text="@string/we_want_to_help_you_colour_code_your_daily_tasks_and_check_them_off_as_you_go"
         android:textColor="@color/black"
-        android:textSize="19dp"
+        android:textSize="19sp"
         app:layout_constraintBottom_toTopOf="@id/task_types"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/welcome_message"
         app:layout_constraintTop_toBottomOf="@id/welcome_message" />
 
     <ImageView
