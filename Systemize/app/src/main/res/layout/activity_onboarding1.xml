@@ -26,6 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
+        android:imeOptions="actionDone"
+        android:inputType="textImeMultiLine"
         android:fontFamily="@font/futura_medium"
         android:hint="Type your name here"
         android:id="@+id/welcome_enter_text"
