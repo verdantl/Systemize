@@ -3,4 +3,10 @@
     <string name="get_started">Get Started</string>
     <string name="bio">Bio</string>
     <string name="occupation">Occupation</string>
+    <string name="journal">journal</string>
+    <string name="create_task">Create Task</string>
+    <string name="duration">duration</string>
+    <string name="calendarbutton">calendarbutton</string>
+    <string name="task_name">Task Name</string>
+    <string name="create_new_task">Create New Task</string>
 </resources>

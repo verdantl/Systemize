@@ -12,20 +12,21 @@
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.06"
+        app:layout_constraintVertical_bias="0.07"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="center_horizontal"
-        android:text="Hey, what's the agenda for today?"/>
+        android:text="Hey, what's the agenda\n for today?"/>
 
     <include layout="@layout/card_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/hi_message"
          app:layout_constraintBottom_toBottomOf="parent"
          app:layout_constraintLeft_toLeftOf="parent"
          app:layout_constraintRight_toRightOf="parent"
-         app:layout_constraintVertical_bias=".2" />
+         app:layout_constraintVertical_bias="0.05"
+        android:id="@+id/card_note"/>
 
     <LinearLayout
         android:id="@+id/set_reminder"
@@ -35,10 +36,10 @@
         android:orientation="horizontal"
         android:weightSum="5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.37"
+        app:layout_constraintVertical_bias="0.01"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/card_note">
 
         <TextView
             android:layout_width="wrap_content"

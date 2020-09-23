@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.12"
         app:layout_constraintLeft_toLeftOf="@id/profile_title"
-        android:maxWidth="350dp"
+        android:maxWidth="300dp"
         android:textSize="15sp"
         android:fontFamily="@font/futura_medium"
         android:textColor="@color/black"/>

@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else{
-            if (first) {
+            if (!first) {
                 setContentView(R.layout.activity_task_selection);
+                first = true;
             }
             else{
                 Intent intent = new Intent(this, OnboardingActivity1.class);
