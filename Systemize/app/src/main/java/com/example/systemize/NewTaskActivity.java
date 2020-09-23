@@ -90,7 +90,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         db = taskHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_TASK, String.valueOf(taskName.getText()));
-        contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY, String.valueOf(category));
+        contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_CATEGORY, String.valueOf(category).trim());
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DATE, saveDate.toString());
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_DURATION, duration.getText().toString());
         contentValues.put(TaskContract.TaskEntry.COLUMN_NAME_COMPLETED, false);
