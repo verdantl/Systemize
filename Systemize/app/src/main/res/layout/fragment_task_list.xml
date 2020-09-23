@@ -16,7 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="center_horizontal"
-        android:text="Hey, what's the agenda\n for today?"/>
+        android:text="Hey, what's on the agenda\n for today?"/>
 
     <include layout="@layout/card_note"
         android:layout_width="wrap_content"

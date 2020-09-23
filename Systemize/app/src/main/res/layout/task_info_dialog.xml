@@ -16,7 +16,7 @@
         android:fontFamily="@font/futura_medium"
         android:textColor="@color/black"
         android:padding="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_margin="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,14 +29,13 @@
         android:layout_height="wrap_content"
         app:layout_constrainedWidth="true"
         android:textSize="25sp"
+        android:layout_margin="10dp"
         android:padding="10dp"
         android:fontFamily="@font/futura_medium"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.3"/>
+        app:layout_constraintTop_toBottomOf="@id/task_name" />
 
     <TextView
         android:id="@+id/duration"
@@ -45,21 +44,20 @@
         app:layout_constrainedWidth="true"
         android:textSize="25sp"
         android:padding="10dp"
+        android:layout_margin="10dp"
         android:fontFamily="@font/futura_medium"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_day"
         app:layout_constraintVertical_bias="0.4"/>
 
     <ImageView
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.8"/>
+        app:layout_constraintTop_toBottomOf="@id/duration" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
