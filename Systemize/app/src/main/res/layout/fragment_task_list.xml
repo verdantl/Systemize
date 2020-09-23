@@ -84,7 +84,7 @@
         android:fontFamily="@font/futura_medium"
         android:textColor="@color/black"
         android:textSize="25sp"
-        android:text="You don't have any tasks yet! \n\n Click on the '+' button below to add something."/>
+        android:text="You don't have any tasks for today yet! \n\n Click on the '+' button below to add something."/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

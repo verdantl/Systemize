@@ -48,8 +48,10 @@
         android:contentDescription="@string/journal" />
 
     <TableLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
+        android:layout_marginHorizontal="20dp"
         android:id="@+id/table"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -71,6 +73,8 @@
                 android:id="@+id/date"
                 android:padding="5dp"
                 android:layout_height="match_parent"
+                android:layout_width="match_parent"
+
                 android:gravity="center_vertical"
                 android:fontFamily="@font/futura_medium"
                 android:textSize="20sp"

@@ -1,5 +1,6 @@
 package com.example.systemize;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
@@ -8,6 +9,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -128,6 +130,11 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         saveDate = LocalDate.parse(format.format(c.getTime()));
         date.setText(currentDateString);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     @Override

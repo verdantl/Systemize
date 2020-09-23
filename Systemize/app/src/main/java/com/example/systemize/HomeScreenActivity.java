@@ -49,22 +49,22 @@ public class HomeScreenActivity extends AppCompatActivity {
         switch (previous){
             case R.id.nav_calendar:
                 selectedFragment = new CalendarFragment();
-                previous = 1;
+                previous = R.id.nav_calendar;
                 fab.show();
                 break;
             case R.id.nav_home:
                 selectedFragment = new HomeFragment();
-                previous = 2;
+                previous = R.id.nav_home;
                 fab.show();
                 break;
             case R.id.nav_profile:
                 selectedFragment = new ProfileFragment();
-                previous = 3;
+                previous = R.id.nav_profile;
                 fab.hide();
                 break;
             case R.id.nav_user:
                 selectedFragment = new UserFragment();
-                previous = 4;
+                previous = R.id.nav_user;
                 fab.hide();
                 break;
         }
@@ -88,18 +88,22 @@ public class HomeScreenActivity extends AppCompatActivity {
                     switch (item.getItemId()){
                         case R.id.nav_calendar:
                             selectedFragment = new CalendarFragment();
+                            previous = R.id.nav_calendar;
                             fab.show();
                             break;
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
+                            previous = R.id.nav_home;
                             fab.show();
                             break;
                         case R.id.nav_profile:
                             selectedFragment = new ProfileFragment();
+                            previous = R.id.nav_profile;
                             fab.hide();
                             break;
                         case R.id.nav_user:
                             selectedFragment = new UserFragment();
+                            previous = R.id.nav_user;
                             fab.hide();
                             break;
                     }

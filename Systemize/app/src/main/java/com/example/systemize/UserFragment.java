@@ -125,6 +125,7 @@ public class UserFragment extends Fragment {
         barData.setValueFormatter(new MyYAxisValueFormatter());
         barData.setHighlightEnabled(false);
         barChart.setData(barData);
+        barChart.setTouchEnabled(false);
         barChart.setDrawGridBackground(false);
         barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(datesOfWeek));
         barChart.getDescription().setEnabled(false);
