@@ -25,11 +25,13 @@ public class HomeFragment extends ListFragment {
     private ListAdapter listAdapter;
     private ArrayList<TaskItem> taskList;
     private TextView noTasks;
+    private TextView yourTasks;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
         noTasks = view.findViewById(R.id.no_tasks);
+        yourTasks = view.findViewById(R.id.your_tasks);
         buildRecyclerView(view);
 
         return view;
@@ -73,9 +75,11 @@ public class HomeFragment extends ListFragment {
         readDatabase();
         if (taskList.isEmpty()){
             noTasks.setVisibility(View.VISIBLE);
+            yourTasks.setVisibility(View.INVISIBLE);
         }
         else {
             noTasks.setVisibility(View.INVISIBLE);
+            yourTasks.setVisibility(View.VISIBLE);
             recyclerView.setHasFixedSize(true);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
             listAdapter = new ListAdapter(taskList, getResources().getFont(R.font.futura_medium), this);
