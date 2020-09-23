@@ -107,4 +107,10 @@ public class TaskItem {
     public boolean getCompleted(){
         return completed;
     }
+
+    public String getShortenedTitle(){
+        if (title.length() > 20){
+        }
+        return title;
+    }
 }

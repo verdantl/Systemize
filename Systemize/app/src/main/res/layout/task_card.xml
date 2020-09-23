@@ -11,33 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:weightSum="7">
+        android:weightSum="12">
         <CheckBox
             android:id="@+id/completed"
             android:onClick="onChecked"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
+            android:gravity="center"
             />
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
         <TextView
             android:id="@+id/task_name"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+
             android:textSize="20sp"
             android:fontFamily="@font/futura_medium"
             android:textColor="@color/black"
-            android:layout_weight="4"/>
+            android:layout_weight="8"/>
 
         <ImageView
             android:id="@+id/category"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/home"
             android:contentDescription="category"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
