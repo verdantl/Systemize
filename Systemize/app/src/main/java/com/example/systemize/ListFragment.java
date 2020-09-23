@@ -31,7 +31,7 @@ public abstract class ListFragment extends Fragment {
         LocalDate newDate = LocalDate.parse(taskItem.getDate());
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, newDate.getYear());
-        c.set(Calendar.MONTH, newDate.getMonthValue());
+        c.set(Calendar.MONTH, newDate.getMonthValue() - 1);
         c.set(Calendar.DAY_OF_MONTH, newDate.getDayOfMonth());
         date.setText(DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime()));
 

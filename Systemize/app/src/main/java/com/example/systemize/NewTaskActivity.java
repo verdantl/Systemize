@@ -49,6 +49,8 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         saveDate = LocalDate.now();
         final String[] categories = {"Work", "Personal                  ",
                 "Social", "Finances", "Family", "School", "Other"};
+        findViewById(R.id.calendar_button).setBackgroundColor(0);
+        findViewById(R.id.clock_button).setBackgroundColor(0);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.style_spinner,
                 new ArrayList<>(Arrays.asList(categories)));
         spinner = findViewById(R.id.spinner_category);
