@@ -17,7 +17,8 @@
         android:textColor="@color/black"
         android:textSize="36sp"
         android:padding="25dp"
-        app:layout_constraintBottom_toTopOf="@id/welcome_enter_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,15 +31,15 @@
         android:imeOptions="actionDone"
         android:inputType="textImeMultiLine"
         android:fontFamily="@font/futura_medium"
-        android:hint="Type your name here"
+        android:hint="@string/type_your_name_here"
         android:id="@+id/welcome_enter_text"
         android:textColorHint="@color/dark_gray"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.35"
-        app:layout_constraintTop_toTopOf="@id/get_started"
+        app:layout_constraintTop_toBottomOf="@id/get_started"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.32"
+        app:layout_constraintVertical_bias="0"
         />
 
     <ImageView

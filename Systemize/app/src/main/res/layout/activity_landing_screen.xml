@@ -10,21 +10,12 @@
     >
 <!--    need to make background gradient (dark peach bottom, light peach top)-->
 
-    <ImageView
-        android:id="@+id/systemize_logo"
-        android:layout_width="363dp"
-        android:layout_height="244dp"
-        android:src="@drawable/systemize_logo_white"
-        app:layout_constraintBottom_toBottomOf="@id/office"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07999998" />
+
 
     <ImageView
         android:id="@+id/office"
-        android:layout_width="888dp"
-        android:layout_height="509dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/office"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -32,7 +23,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.882" />
-
+    <ImageView
+        android:id="@+id/systemize_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/systemize_logo_white"
+        app:layout_constraintBottom_toBottomOf="@id/office"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05999998" />
     <Button
         android:id="@+id/get_started_button"
         android:layout_width="wrap_content"

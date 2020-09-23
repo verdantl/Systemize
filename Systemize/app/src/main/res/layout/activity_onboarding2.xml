@@ -22,7 +22,6 @@
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/productiveness_prompt"
-
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
