@@ -76,7 +76,7 @@ public class NewTaskActivity extends AppCompatActivity implements DatePickerDial
         date = findViewById(R.id.date);
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, LocalDate.now().getYear());
-        c.set(Calendar.MONTH, LocalDate.now().getMonthValue());
+        c.set(Calendar.MONTH, LocalDate.now().getMonthValue() - 1);
         c.set(Calendar.DAY_OF_MONTH, LocalDate.now().getDayOfMonth());
         date.setText(DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime()));
         duration = findViewById(R.id.duration);

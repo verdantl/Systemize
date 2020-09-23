@@ -35,6 +35,18 @@
         app:layout_constraintBottom_toBottomOf="@id/table"
         app:layout_constraintVertical_bias="0.2"/>
 
+    <ImageView
+        android:id="@+id/journal"
+        android:layout_width="310dp"
+        android:layout_height="317dp"
+        android:src="@drawable/journal"
+        app:layout_constraintBottom_toTopOf="@id/spinner_category"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_category"
+        android:contentDescription="@string/journal" />
+
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,19 +100,6 @@
                 />
         </TableRow>
     </TableLayout>
-
-
-    <ImageView
-        android:id="@+id/journal"
-        android:layout_width="310dp"
-        android:layout_height="317dp"
-        android:src="@drawable/journal"
-        app:layout_constraintBottom_toTopOf="@id/spinner_category"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_category"
-        android:contentDescription="@string/journal" />
 
     <Spinner
         android:id="@+id/spinner_category"
