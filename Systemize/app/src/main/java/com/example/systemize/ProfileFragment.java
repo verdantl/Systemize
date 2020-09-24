@@ -87,9 +87,9 @@ public class ProfileFragment extends Fragment {
             name.setText(nameString);
             occupation.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_OCCUPATION)));
             bio.setText(cursor.getString(cursor.getColumnIndex(SettingsContract.SettingsEntry.COLUMN_NAME_BIO)));
-            cursor.close();
-        }
 
+        }
+        cursor.close();
         cursor = db.rawQuery("select * from imageInfo", null);
         if (cursor.getCount() != 0){
             cursor.moveToLast();

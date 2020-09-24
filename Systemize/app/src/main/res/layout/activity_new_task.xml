@@ -40,11 +40,11 @@
         android:layout_width="310dp"
         android:layout_height="317dp"
         android:src="@drawable/journal"
-        app:layout_constraintBottom_toTopOf="@id/spinner_category"
+        app:layout_constraintTop_toBottomOf="@id/spinner_category"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_category"
+        app:layout_constraintBottom_toBottomOf="@id/create_button"
         android:contentDescription="@string/journal" />
 
     <TableLayout
@@ -53,11 +53,12 @@
         android:layout_width="fill_parent"
         app:layout_constrainedWidth="true"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/table"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/task_name"
-        app:layout_constraintBottom_toBottomOf="@id/spinner_category"
+        app:layout_constraintBottom_toTopOf="@id/spinner_category"
         app:layout_constraintVertical_bias="0.1"
         >
         <TableRow>
@@ -113,9 +114,8 @@
         android:layout_margin="20dp"
         android:background="@drawable/style_spinner"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:layout_constraintBottom_toTopOf="@id/create_button"
+
         app:layout_constraintTop_toBottomOf="@id/table"
-        app:layout_constraintVertical_bias="0.6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
     <Button

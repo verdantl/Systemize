@@ -24,7 +24,7 @@ public class SettingsHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + SettingsContract.SettingsEntry.TABLE_NAME;
 
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 5;
 
     public static final String DATABASE_NAME = "Settings.db";
 
