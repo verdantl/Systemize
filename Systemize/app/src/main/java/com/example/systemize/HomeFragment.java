@@ -52,8 +52,9 @@ public class HomeFragment extends ListFragment {
     }
 
     private void testCompletion(int id){
-        SQLiteDatabase db = new TaskHelper(Objects.requireNonNull(getActivity()).
-                getApplicationContext()).getReadableDatabase();
+        TaskHelper helper = new TaskHelper(Objects.requireNonNull(getActivity()).
+                getApplicationContext());
+        SQLiteDatabase db = helper.getReadableDatabase();
         String sortOrder =
                 BaseColumns._ID + " DESC";
 
@@ -69,6 +70,8 @@ public class HomeFragment extends ListFragment {
                 sortOrder);
         cursor.moveToFirst();
         cursor.close();
+        helper.close();
+
     }
     private void buildRecyclerView(View view){
         recyclerView = view.findViewById(R.id.recycler_view);
@@ -100,8 +103,9 @@ public class HomeFragment extends ListFragment {
 
     private void readDatabase(){
         String date = LocalDate.now().toString();
-        SQLiteDatabase db = new TaskHelper(Objects.requireNonNull(getActivity()).
-                getApplicationContext()).getReadableDatabase();
+        TaskHelper helper = new TaskHelper(Objects.requireNonNull(getActivity()).
+                getApplicationContext());
+        SQLiteDatabase db = helper.getReadableDatabase();
         String sortOrder =
                 BaseColumns._ID + " DESC";
 

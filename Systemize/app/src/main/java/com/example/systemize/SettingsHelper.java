@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import java.io.ByteArrayOutputStream;
 
 public class SettingsHelper extends SQLiteOpenHelper {
@@ -24,14 +26,17 @@ public class SettingsHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + SettingsContract.SettingsEntry.TABLE_NAME;
 
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 1;
 
     public static final String DATABASE_NAME = "Settings.db";
 
-    private static String createTableQuery = "create table if not exists imageInfo (imageName Text" + ", image BLOB)";
+    private static String createTableQuery = "create table if not exists imageInfo (image BLOB)";
+
+    private Context context;
 
     public SettingsHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -41,19 +46,20 @@ public class SettingsHelper extends SQLiteOpenHelper {
     }
 
     public void storeImage(ModelClass objectModelClass){
-        try{
+        try {
             SQLiteDatabase db = this.getWritableDatabase();
             Bitmap imageToStoreBitmap = objectModelClass.getImage();
             objectByteArrayOutputStream = new ByteArrayOutputStream();
             imageToStoreBitmap.compress(Bitmap.CompressFormat.JPEG, 100, objectByteArrayOutputStream);
             imageInBytes = objectByteArrayOutputStream.toByteArray();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("image", imageInBytes);
-            long value = db.insert("imageInfo", null, contentValues);
-            if (value != 0){
-                System.out.println("saved");
+            if (imageInBytes.length > 2000000) {
+                Toast.makeText(context, "This image is too large.", Toast.LENGTH_SHORT).show();
+            } else {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("image", imageInBytes);
+                long value = db.insert("imageInfo", null, contentValues);
             }
-        } catch (Exception e){
+        } catch(Exception e){
             e.printStackTrace();
         }
 
