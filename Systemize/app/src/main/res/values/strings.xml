@@ -25,4 +25,7 @@
     <string name="finances">Finances</string>
     <string name="family">Family</string>
     <string name="school">School</string>
+    <string name="name">Name</string>
+    <string name="occupation">Occupation</string>
+    <string name="bio">Bio</string>
 </resources>

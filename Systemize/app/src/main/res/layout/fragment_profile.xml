@@ -50,7 +50,6 @@
         android:id="@+id/name_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sam The Man"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -75,7 +74,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@string/name"
             android:textSize="20sp"
             android:fontFamily="@font/futura_medium"
             android:textColor="@color/gray"/>
@@ -86,8 +85,6 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sam The Man"
-
             android:textSize="20sp"
             android:fontFamily="@font/futura_medium"
             android:textColor="@color/black"/>
@@ -97,7 +94,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/column_marker"
         android:maxWidth="200dp"
@@ -108,7 +105,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Occupation"
+            android:text="@string/occupation"
             android:textSize="20sp"
             android:fontFamily="@font/futura_medium"
             android:textColor="@color/gray"/>
@@ -119,8 +116,6 @@
             android:id="@+id/occupation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Small Business Owner"
-
             android:textSize="20sp"
             android:fontFamily="@font/futura_medium"
             android:textColor="@color/black"/>
@@ -130,7 +125,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/column_marker"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -141,7 +136,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bio"
+            android:text="@string/bio"
             android:textSize="20sp"
             android:fontFamily="@font/futura_medium"
             android:textColor="@color/gray"/>
@@ -152,8 +147,6 @@
             android:id="@+id/bio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I'm a fun guy :)"
-
             android:textSize="20sp"
             android:fontFamily="@font/futura_medium"
             android:textColor="@color/black"/>
